@@ -1,6 +1,5 @@
 package Database;
 
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -30,24 +29,42 @@ public class MigrationFileCreator {
     }
 
     private static void createMigrationFile(String migrationName) {
+        MigrationNameParser mnp = new MigrationNameParser();
         try {
-            String content = "public class " + migrationName + " extends Migration {\n"
+            String tableName = mnp.getTableName(migrationName);
+            String content = "package Database.Migrations;\n"
+                    + "public class " + migrationName + " extends Migration {\n"
                     + "    @Override\n"
-                    + "    public void up() {\n"
-                    + "        // TODO: Add your migration code here\n"
-                    + "    }\n"
+                    + "    public void up() {\n";
+
+            if (migrationName.startsWith("Create")) {
+                content += "        String sql = createTable(\"" + tableName + "\")\n"
+                        + "            .id()\n"
+                        + "            .timestamp()\n"
+                        + "            .build();\n"
+                        + "        executeStatement(sql);\n";
+            } else if (migrationName.startsWith("Add")) {
+                String[] result = mnp.getColumnNameAndTableName(migrationName);
+                String columnName = result[0];
+                String tableToAddColumn = result[1];
+
+                content += "        String sql = addColumn(\"" + tableToAddColumn + "\", \"" + columnName + "\");\n"
+                        + "        executeStatement(sql);\n";
+            }
+
+            content += "    }\n"
                     + "\n"
                     + "    @Override\n"
                     + "    public void down() {\n"
                     + "        // TODO: Add your rollback code here\n"
                     + "    }\n"
                     + "}";
-            Path path = Paths.get("./src/Database/" + migrationName + ".java");
+
+            Path path = Paths.get("./src/Database/Migrations/" + migrationName + ".java");
             Files.write(path, content.getBytes());
-        }
-        
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }

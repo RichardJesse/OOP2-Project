@@ -29,6 +29,15 @@ public abstract class Migration {
         return new Table(name);
     }
 
+    protected void dropTableIfExists(String tableName) {
+        String sql = "DROP TABLE IF EXISTS " + tableName;
+        executeStatement(sql);
+    }
+    
+    protected void addColumn(String tableName,String columnName){
+        String sql = "ALTER TABLE " + tableName + " ADD COLUMN "+columnName;
+    }
+
     public static class Table {
 
         private final String name;
@@ -39,8 +48,14 @@ public abstract class Migration {
             sql.append("CREATE TABLE ").append(name).append(" (");
         }
 
-        public Table string(String columnName, int length) {
-            sql.append(columnName).append(" VARCHAR(").append(length).append("), ");
+        public Table string(String columnName, Integer... length) {
+            int len = (length.length > 0) ? length[0] : 255;
+            sql.append(columnName).append(" VARCHAR(").append(len).append("), ");
+            return this;
+        }
+
+        public Table id() {
+            sql.append("id INT NOT NULL AUTO_INCREMENT PRIMARY KEY , ");
             return this;
         }
 
@@ -99,6 +114,13 @@ public abstract class Migration {
             return this;
         }
 
+        public Table timestamps() {
+            sql.append(" created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,\n"
+                    + "  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
+            
+            return this;
+        }
+
         public Table charType(String columnName, int length) {
             sql.append(columnName).append(" CHAR(").append(length).append("), ");
             return this;
@@ -123,6 +145,4 @@ public abstract class Migration {
 
     }
 
-    
 }
-

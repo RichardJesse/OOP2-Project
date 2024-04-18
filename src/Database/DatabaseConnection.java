@@ -23,7 +23,7 @@ public class DatabaseConnection {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
+ 
         try {
             this.connection = DriverManager.getConnection(url, username, password);
             System.out.println("Connected successfully!");
