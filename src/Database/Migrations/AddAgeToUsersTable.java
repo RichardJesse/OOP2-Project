@@ -1,12 +1,9 @@
 package Database.Migrations;
-
-import Database.*;
-public class AddNameToNumbersTable extends Migration {
+import Database.*;public class AddAgeToUsersTable extends Migration {
     @Override
     public void up() {
-          addColumn("numbers", "name", "VARCHAR");
-        
-    }
+      addColumn("users", "age");
+         }
 
     @Override
     public void down() {

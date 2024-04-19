@@ -33,6 +33,7 @@ public class MigrationFileCreator {
         try {
             String tableName = mnp.getTableName(migrationName);
             String content = "package Database.Migrations;\n"
+                    + "import Database.*;"
                     + "public class " + migrationName + " extends Migration {\n"
                     + "    @Override\n"
                     + "    public void up() {\n";
@@ -48,8 +49,8 @@ public class MigrationFileCreator {
                 String columnName = result[0];
                 String tableToAddColumn = result[1];
 
-                content += "        String sql = addColumn(\"" + tableToAddColumn + "\", \"" + columnName + "\");\n"
-                        + "        executeStatement(sql);\n";
+                content += "      addColumn(\"" + tableToAddColumn + "\", \"" + columnName + "\");\n"
+                        + "     ";
             }
 
             content += "    }\n"

@@ -10,9 +10,9 @@ public class MigrationRunner {
         // Manually maintain a list of all your migration classes
         List<Class<? extends Migration>> migrationClasses = Arrays.asList(
                
-                CreateNumbersTable.class
-//            CreateUserTableMigration.class,
-//            CreatePostsTableMigration.class
+                CreateNumbersTable.class,
+                AddNameToNumbersTable.class
+
             // Add more migration classes as needed...
         );
 

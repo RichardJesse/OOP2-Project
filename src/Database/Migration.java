@@ -1,9 +1,12 @@
 package Database;
 
 import java.sql.Connection;
+import LessJava.*;
 import java.sql.Statement;
 
 public abstract class Migration {
+    
+    OutputHelper output = new OutputHelper();
 
     protected Connection connection;
 
@@ -29,13 +32,18 @@ public abstract class Migration {
         return new Table(name);
     }
 
+    protected void addColumn(String tableName, String columnName, String dataType) {
+       
+        String sql = "ALTER TABLE "+ tableName +" ADD COLUMN "+ columnName + dataType;
+        output.print(columnName);
+        
+        output.print(sql);
+        executeStatement(sql);
+    }
+
     protected void dropTableIfExists(String tableName) {
         String sql = "DROP TABLE IF EXISTS " + tableName;
         executeStatement(sql);
-    }
-    
-    protected void addColumn(String tableName,String columnName){
-        String sql = "ALTER TABLE " + tableName + " ADD COLUMN "+columnName;
     }
 
     public static class Table {
@@ -47,6 +55,11 @@ public abstract class Migration {
             this.name = name;
             sql.append("CREATE TABLE ").append(name).append(" (");
         }
+
+        public Table addColumn(String columnName) {
+            sql.append(" ADD COLUMN ").append(columnName);
+            return this;
+        } 
 
         public Table string(String columnName, Integer... length) {
             int len = (length.length > 0) ? length[0] : 255;
@@ -117,7 +130,7 @@ public abstract class Migration {
         public Table timestamps() {
             sql.append(" created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,\n"
                     + "  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
-            
+
             return this;
         }
 
