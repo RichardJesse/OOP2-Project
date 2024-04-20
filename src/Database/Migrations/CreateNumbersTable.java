@@ -1,24 +1,16 @@
 package Database.Migrations;
-
-import Database.Migration;
-
-public class CreateNumbersTable extends Migration {
-
+import Database.*;public class CreateNumbersTable extends Migration {
     @Override
     public void up() {
         String sql = createTable("numbers")
-                .id()
-                .string("name")
-                .build();
-        executeStatement(sql);   
-        
-        System.out.println(sql);
-        
-// TODO: Add your migration code here
+            .id()
+            .string("name")
+            .build();
+        executeStatement(sql);
     }
 
     @Override
     public void down() {
-        dropTableIfExists("numbers");
+        // TODO: Add your rollback code here
     }
 }

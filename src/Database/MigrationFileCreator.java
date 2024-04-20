@@ -3,6 +3,7 @@ package Database;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
 
 public class MigrationFileCreator {
@@ -18,6 +19,7 @@ public class MigrationFileCreator {
                 String migrationName = command.split(" ")[1];
                 createMigrationFile(migrationName);
                 System.out.println("Created migration file: " + migrationName + ".java");
+                updateMigrationList(migrationName);
             } else if ("exit".equals(command)) {
                 break;
             } else {
@@ -63,6 +65,16 @@ public class MigrationFileCreator {
 
             Path path = Paths.get("./src/Database/Migrations/" + migrationName + ".java");
             Files.write(path, content.getBytes());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private static void updateMigrationList(String migrationName) {
+        try {
+            Path path = Paths.get("./src/Database/migrations.txt");
+            String content = migrationName + "\n";
+            Files.write(path, content.getBytes(), StandardOpenOption.APPEND);
         } catch (Exception e) {
             e.printStackTrace();
         }
