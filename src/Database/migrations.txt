@@ -1,4 +1,2 @@
 CreateMigrationsTable
-CreateRandomUsersTable
-CreateRandomVeryTable
-CreateAnonTable
+CreateMTable

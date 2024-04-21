@@ -33,13 +33,13 @@ public class DatabaseOperations {
         }
     }
 
-    public void deleteRecord(String table, String condition, String value) throws SQLException {
+    public void deleteRecord(String table, String condition, String operator, String value) throws SQLException {
         Connection connection = queryBuilder.dbconnection.connection;
         connection.setAutoCommit(false);
         try {
             PreparedStatement preparedStatement = queryBuilder
                     .deleteFrom(table)
-                    .where(condition, value)
+                    .where(condition, operator, value)
                     .build();
             preparedStatement.executeUpdate();
             connection.commit();
@@ -51,7 +51,7 @@ public class DatabaseOperations {
         }
     }
 
-    public void updateRecord(String table, String updates, String condition, String conditionValue) throws SQLException {
+    public void updateRecord(String table, String updates, String condition, String operator, String conditionValue) throws SQLException {
         Connection connection = queryBuilder.dbconnection.connection;
         connection.setAutoCommit(false);
         try {
@@ -61,7 +61,7 @@ public class DatabaseOperations {
                 queryBuilder.set(parts[0], parts[1]);
             }
             PreparedStatement preparedStatement = queryBuilder
-                    .where(condition, conditionValue)
+                    .where(condition, operator, conditionValue)
                     .build();
             preparedStatement.executeUpdate();
             connection.commit();

@@ -19,10 +19,10 @@ public class TestClass {
         QueryBuilder qb = new QueryBuilder();
         DatabaseOperations Data0 = new DatabaseOperations();
         
-        Data0.insertRecord("users", "username , password , account_number", "jesse ,789 , 900000");
+       
         
-         PreparedStatement statement = qb.deleteFrom("users").where("username", "jesse").build();
-              statement.executeQuery();
+         PreparedStatement statement = qb.insert("users", "username" , "password" , "account_number").values("jesse", "123" ,"800").build();
+         statement.execute();
   
 
       

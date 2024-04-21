@@ -1,4 +1,3 @@
-
 package Database;
 
 import java.sql.Connection;
@@ -9,8 +8,7 @@ import java.util.List;
 
 public class QueryBuilder {
 
-    
-     DatabaseConnection dbconnection = new DatabaseConnection();
+    DatabaseConnection dbconnection = new DatabaseConnection();
     private StringBuilder query;
     private List<Object> parameters;
 
@@ -29,8 +27,8 @@ public class QueryBuilder {
         return this;
     }
 
-    public QueryBuilder where(String condition, Object value) {
-        query.append("WHERE ").append(condition).append(" = ? ");
+    public QueryBuilder where(String column, String operator, Object value) {
+        query.append("WHERE ").append(column).append(" ").append(operator).append(" ? ");
         parameters.add(value);
         return this;
     }
@@ -38,7 +36,11 @@ public class QueryBuilder {
     public QueryBuilder insert(String table, String... columns) {
         query.append("INSERT INTO ").append(table);
         query.append("(").append(String.join(", ", columns)).append(") ");
-        query.append("VALUES (").append("?,".repeat(columns.length - 1)).append("?) ");
+        query.append("VALUES (");
+        if (columns.length > 1) {
+            query.append("?,".repeat(columns.length - 1));
+        }
+        query.append("?) ");
         return this;
     }
 
@@ -67,6 +69,7 @@ public class QueryBuilder {
 
     public PreparedStatement build() throws SQLException {
         PreparedStatement preparedStatement = dbconnection.connection.prepareStatement(query.toString());
+        System.out.println("Final SQL query: " + query.toString());
         for (int i = 0; i < parameters.size(); i++) {
             preparedStatement.setObject(i + 1, parameters.get(i));
         }

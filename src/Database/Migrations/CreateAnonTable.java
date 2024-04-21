@@ -1,15 +1,15 @@
 package Database.Migrations;
-import Database.*;public class CreateMigrationsTable extends Migration {
+import Database.*;public class CreateAnonTable extends Migration {
     @Override
     public void up() {
-        String sql = createTable("migrations")
+        String sql = createTable("anon")
             .id()
-           .string("migration_class")
+            
             .build();
         executeStatement(sql);
     }
 
-    @Override 
+    @Override
     public void down() {
         // TODO: Add your rollback code here
     }
