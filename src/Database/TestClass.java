@@ -21,12 +21,11 @@ public class TestClass {
         
         Data0.insertRecord("users", "username , password , account_number", "jesse ,789 , 900000");
         
-        
-        
-        PreparedStatement query = qb.select("name, age, balance").from("random").build();
+         PreparedStatement statement = qb.deleteFrom("users").where("username", "jesse").build();
+              statement.executeQuery();
+  
 
-        System.out.println(query);
-
+      
     }
 
 }

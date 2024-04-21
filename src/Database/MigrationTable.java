@@ -16,7 +16,7 @@ public class MigrationTable {
         // Check if a migration has been run
         try {
             Statement statement = dbConnection.connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM migrations WHERE name = '" + migrationName + "'");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM migrations WHERE migration_class = '" + migrationName + "'");
             return resultSet.next();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -28,7 +28,7 @@ public class MigrationTable {
         // Mark a migration as run
         try {
             Statement statement = dbConnection.connection.createStatement();
-            statement.executeUpdate("INSERT INTO migrations (name) VALUES ('" + migrationName + "')");
+            statement.executeUpdate("INSERT INTO migrations (migration_class) VALUES ('" + migrationName + "')");
         } catch (SQLException e) {
             e.printStackTrace();
         }

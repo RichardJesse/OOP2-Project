@@ -1,10 +1,10 @@
 package Database.Migrations;
-import Database.*;public class CreateNumbersTable extends Migration {
+import Database.*;public class CreateAnonTable extends Migration {
     @Override
     public void up() {
-        String sql = createTable("numbers")
+        String sql = createTable("anon")
             .id()
-            .string("name")
+            
             .build();
         executeStatement(sql);
     }

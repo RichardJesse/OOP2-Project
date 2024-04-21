@@ -34,6 +34,7 @@ public class MigrationFileCreator {
         MigrationNameParser mnp = new MigrationNameParser();
         try {
             String tableName = mnp.getTableName(migrationName);
+            System.out.println(tableName);
             String content = "package Database.Migrations;\n"
                     + "import Database.*;"
                     + "public class " + migrationName + " extends Migration {\n"

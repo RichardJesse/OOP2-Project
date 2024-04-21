@@ -1,1 +1,4 @@
-CreateNumbersTable
+CreateMigrationsTable
+CreateRandomUsersTable
+CreateRandomVeryTable
+CreateAnonTable
