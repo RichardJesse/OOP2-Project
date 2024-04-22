@@ -19,10 +19,10 @@ public class TestClass {
         QueryBuilder qb = new QueryBuilder();
         DatabaseOperations Data0 = new DatabaseOperations();
         
-       
+     
         
-         PreparedStatement statement = qb.insert("users", "username" , "password" , "account_number").values("jesse", "123" ,"800").build();
-         statement.execute();
+//         PreparedStatement statement = qb.insert("users", "username" , "password" , "account_number").values("jesse", "123" ,"800").build();
+//         statement.execute();
   
 
       
