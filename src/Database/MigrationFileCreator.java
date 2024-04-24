@@ -4,6 +4,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MigrationFileCreator {
@@ -19,7 +21,7 @@ public class MigrationFileCreator {
                 String migrationName = command.split(" ")[1];
                 createMigrationFile(migrationName);
                 System.out.println("Created migration file: " + migrationName + ".java");
-                updateMigrationList(migrationName);
+                addMigration(migrationName);
             } else if ("exit".equals(command)) {
                 break;
             } else {
@@ -44,7 +46,6 @@ public class MigrationFileCreator {
             if (migrationName.startsWith("Create")) {
                 content += "        String sql = createTable(\"" + tableName + "\")\n"
                         + "            .id()\n"
-                        + "            .timestamp()\n"
                         + "            .build();\n"
                         + "        executeStatement(sql);\n";
             } else if (migrationName.startsWith("Add")) {
@@ -70,15 +71,16 @@ public class MigrationFileCreator {
             e.printStackTrace();
         }
     }
-    
-    private static void updateMigrationList(String migrationName) {
+
+    private static void addMigration(String migrationName) {
         try {
             Path path = Paths.get("./src/Database/migrations.txt");
-            String content = migrationName + "\n";
-            Files.write(path, content.getBytes(), StandardOpenOption.APPEND);
+            List<String> lines = new ArrayList<>();
+            lines.add(migrationName); // Add the new migration at the top
+            lines.addAll(Files.readAllLines(path)); // Add the existing migrations
+            Files.write(path, lines);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 }

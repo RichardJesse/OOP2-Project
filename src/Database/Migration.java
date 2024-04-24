@@ -66,6 +66,21 @@ public abstract class Migration {
             sql.append(columnName).append(" VARCHAR(").append(len).append("), ");
             return this;
         }
+        
+        public Table foreignId(String columnName){
+            sql.append("FOREIGN KEY").append("(").append(columnName).append(")").append("");
+            return this;
+        }
+        
+        public Table constrained(String tableName){
+            sql.append("ReferencedTableName").append("(").append(tableName).append(")").append("");
+            return this;
+        }
+        
+        public Table cascadeOnDelete(){
+            sql.append("ON DELETE CASCADE").append("");
+            return this;
+        }
 
         public Table id() {
             sql.append("id INT NOT NULL AUTO_INCREMENT PRIMARY KEY , ");

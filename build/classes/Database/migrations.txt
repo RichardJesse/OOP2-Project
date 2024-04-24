@@ -1,2 +1,6 @@
+CreateCVTable
+CreateChairTable
 CreateMigrationsTable
 CreateMTable
+
+
