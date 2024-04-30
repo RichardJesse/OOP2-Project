@@ -1,5 +1,6 @@
 package Database;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,9 +38,10 @@ public class MigrationFileCreator {
         try {
             String tableName = mnp.getTableName(migrationName);
             System.out.println(tableName);
-            String content = "package Database.Migrations;\n"
-                    + "import Database.*;"
-                    + "public class " + migrationName + " extends Migration {\n"
+            String content = """
+                             package Database.Migrations;
+                             import Database.*;
+                             public class """ + migrationName + " extends Migration {\n"
                     + "    @Override\n"
                     + "    public void up() {\n";
 
@@ -57,17 +59,18 @@ public class MigrationFileCreator {
                         + "     ";
             }
 
-            content += "    }\n"
-                    + "\n"
-                    + "    @Override\n"
-                    + "    public void down() {\n"
-                    + "        // TODO: Add your rollback code here\n"
-                    + "    }\n"
-                    + "}";
+            content += """
+                           }
+                       
+                           @Override
+                           public void down() {
+                               // TODO: Add your rollback code here
+                           }
+                       }""";
 
             Path path = Paths.get("./src/Database/Migrations/" + migrationName + ".java");
             Files.write(path, content.getBytes());
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

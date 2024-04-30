@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class QueryBuilder {
@@ -45,9 +46,7 @@ public class QueryBuilder {
     }
 
     public QueryBuilder values(Object... values) {
-        for (Object value : values) {
-            parameters.add(value);
-        }
+        parameters.addAll(Arrays.asList(values));
         return this;
     }
 

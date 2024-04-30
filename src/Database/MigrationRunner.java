@@ -26,7 +26,7 @@ public class MigrationRunner {
                 Class<? extends Migration> migrationClass = (Class<? extends Migration>) Class.forName("Database.Migrations." + line.trim());
                 migrationClasses.add(migrationClass);
             }
-        } catch (Exception e) {
+        } catch (Exception e){
             e.printStackTrace();
         }
 

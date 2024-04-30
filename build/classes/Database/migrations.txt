@@ -1,3 +1,4 @@
+CreateRandomTable
 CreateCVTable
 CreateChairTable
 CreateMigrationsTable

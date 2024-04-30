@@ -91,6 +91,11 @@ public abstract class Migration {
             sql.append(columnName).append(" INT, ");
             return this;
         }
+        
+        public Table text(){
+            sql.append("TEXT").append("");
+            return this;
+        }
 
         public Table bigInteger(String columnName) {
             sql.append(columnName).append(" BIGINT, ");
