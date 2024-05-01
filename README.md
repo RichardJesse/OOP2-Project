@@ -3,6 +3,7 @@
 ## Table of Contents
 - [**Scope of the project**](#scope-of-the-project)
 - [**Migrations**](#migrations)
+- [**Resources**](#resources)
 - [**In case Your MySQL (XAMPP) fails**](#in-case-your-mysql-(xampp)-fails)
 
 
@@ -10,6 +11,12 @@
 
 
 ## Migrations
+
+## Resources 
+
+These are all the files you might need to make development abit easier find them in the develop branch.😊
+
+
 
 ## Incase Your Mysql(XAMPP) fails <a name="in-case-your-mysql-(xampp)-fails"></a>
 
