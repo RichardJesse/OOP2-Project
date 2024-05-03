@@ -1,3 +1,5 @@
+AddRoleToUsersTable
+CreateUsersTable
 CreateRandomTable
 CreateCVTable
 CreateChairTable

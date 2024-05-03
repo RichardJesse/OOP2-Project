@@ -41,7 +41,7 @@ public class MigrationFileCreator {
             String content = """
                              package Database.Migrations;
                              import Database.*;
-                             public class """ + migrationName + " extends Migration {\n"
+                             public class  """ + migrationName + " extends Migration {\n"
                     + "    @Override\n"
                     + "    public void up() {\n";
 

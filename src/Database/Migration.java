@@ -34,7 +34,7 @@ public abstract class Migration {
 
     protected void addColumn(String tableName, String columnName, String dataType) {
        
-        String sql = "ALTER TABLE "+ tableName +" ADD COLUMN "+ columnName + dataType;
+        String sql = "ALTER TABLE "+  tableName  +" ADD COLUMN "+  columnName  +" "+ dataType;
         output.print(columnName);
         
         output.print(sql);
