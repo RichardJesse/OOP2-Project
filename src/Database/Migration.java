@@ -5,7 +5,7 @@ import LessJava.*;
 import java.sql.Statement;
 
 public abstract class Migration {
-    
+
     OutputHelper output = new OutputHelper();
 
     protected Connection connection;
@@ -31,12 +31,14 @@ public abstract class Migration {
     protected Table createTable(String name) {
         return new Table(name);
     }
+    
+   
 
     protected void addColumn(String tableName, String columnName, String dataType) {
-       
-        String sql = "ALTER TABLE "+  tableName  +" ADD COLUMN "+  columnName  +" "+ dataType;
+
+        String sql = "ALTER TABLE " + tableName + " ADD COLUMN " + columnName + " " + dataType;
         output.print(columnName);
-        
+
         output.print(sql);
         executeStatement(sql);
     }
@@ -59,7 +61,7 @@ public abstract class Migration {
         public Table addColumn(String columnName) {
             sql.append(" ADD COLUMN ").append(columnName);
             return this;
-        } 
+        }
 
         public Table string(String columnName, Integer... length) {
             int len = (length.length > 0) ? length[0] : 255;
@@ -67,18 +69,29 @@ public abstract class Migration {
             return this;
         }
         
-        public Table foreignId(String columnName){
-            sql.append("FOREIGN KEY").append("(").append(columnName).append(")").append("");
+        public Table foreignId(String columnName) {
+            sql.append(columnName).append(" INT, ")
+                    .append("FOREIGN KEY").append(" (").append(columnName).append(") ");
+            return this;
+        } 
+        
+        public Table unique(){
+            sql.append("UNIQUE, ");
             return this;
         }
         
-        public Table constrained(String tableName){
-            sql.append("ReferencedTableName").append("(").append(tableName).append(")").append("");
+        public Table notNull(){
+            sql.append("NOT NULL,  ");
             return this;
         }
-        
-        public Table cascadeOnDelete(){
-            sql.append("ON DELETE CASCADE").append("");
+
+        public Table constrained(String tableName) {
+            sql.append("REFERENCES ").append(tableName).append("(id), ");
+            return this;
+        }
+
+        public Table cascadeOnDelete() {
+            sql.append("ON DELETE CASCADE , ").append("");
             return this;
         }
 
@@ -91,8 +104,8 @@ public abstract class Migration {
             sql.append(columnName).append(" INT, ");
             return this;
         }
-        
-        public Table text(){
+
+        public Table text() {
             sql.append("TEXT").append("");
             return this;
         }
@@ -149,7 +162,7 @@ public abstract class Migration {
 
         public Table timestamps() {
             sql.append(" created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,\n"
-                    + "  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
+                    + "  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP  ,");
 
             return this;
         }
@@ -170,7 +183,7 @@ public abstract class Migration {
         }
 
         public String build() {
-            // Remove trailing comma and space, add closing parenthesis
+
             sql.setLength(sql.length() - 2);
             sql.append(");");
             return sql.toString();

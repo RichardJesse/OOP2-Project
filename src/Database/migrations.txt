@@ -1,9 +1,5 @@
-AddRoleToUsersTable
 CreateUsersTable
-CreateRandomTable
-CreateCVTable
-CreateChairTable
 CreateMigrationsTable
-CreateMTable
+
 
 
