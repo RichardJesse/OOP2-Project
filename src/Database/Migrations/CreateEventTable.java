@@ -14,7 +14,7 @@ public class CreateEventTable  extends Migration {
             .string("avaliable_tickets").notNull()
             .text("event_description")
             .string("event_poster_path")
-            .timestamps()
+            .timestamps() 
             .build();
         executeStatement(sql);
     }

@@ -41,7 +41,7 @@ public class MigrationFileCreator {
             String content = """
                              package Database.Migrations;
                              import Database.*;
-                             public class  """ +   migrationName + "  extends Migration {\n"
+                             public class  """ + migrationName + "  extends Migration {\n"
                     + "    @Override\n"
                     + "    public void up() {\n";
 
@@ -75,27 +75,22 @@ public class MigrationFileCreator {
         }
     }
 
-   private static void addMigration(String migrationName) {
-    try {
-        Path path = Paths.get("./src/Database/migrations.txt");
-        List<String> lines = Files.readAllLines(path);
+    private static void addMigration(String migrationName) {
+        try {
+            Path path = Paths.get("./src/Database/migrations.txt");
+            List<String> lines = Files.readAllLines(path);
 
-        // Remove trailing empty lines
-        int lastNonEmptyLineIndex = lines.size() - 1;
-        while (lastNonEmptyLineIndex >= 0 && lines.get(lastNonEmptyLineIndex).trim().isEmpty()) {
-            lastNonEmptyLineIndex--;
+            int lastNonEmptyLineIndex = lines.size() - 1;
+            while (lastNonEmptyLineIndex >= 0 && lines.get(lastNonEmptyLineIndex).trim().isEmpty()) {
+                lastNonEmptyLineIndex--;
+            }
+            
+            lines = lines.subList(0, lastNonEmptyLineIndex + 1);
+            lines.add(migrationName);
+            Files.write(path, lines);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        
-        // Retain only the non-empty lines
-        lines = lines.subList(0, lastNonEmptyLineIndex + 1);
-
-        // Add the new migration at the bottom
-        lines.add(migrationName);
-
-        Files.write(path, lines);
-    } catch (IOException e) {
-        e.printStackTrace();
     }
-}
-}
 }
