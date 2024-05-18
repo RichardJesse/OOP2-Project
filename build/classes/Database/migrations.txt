@@ -1,5 +1,7 @@
-CreateUsersTable
 CreateMigrationsTable
-
-
-
+CreateUsersTable
+CreateEventOrganizerTable
+CreateEventTable
+CreateTicketsTable
+CreateTicketLevelTable
+CreatePTable

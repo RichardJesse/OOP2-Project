@@ -75,15 +75,27 @@ public class MigrationFileCreator {
         }
     }
 
-    private static void addMigration(String migrationName) {
-        try {
-            Path path = Paths.get("./src/Database/migrations.txt");
-            List<String> lines = new ArrayList<>();
-            lines.add(migrationName); // Add the new migration at the top
-            lines.addAll(Files.readAllLines(path)); // Add the existing migrations
-            Files.write(path, lines);
-        } catch (Exception e) {
-            e.printStackTrace();
+   private static void addMigration(String migrationName) {
+    try {
+        Path path = Paths.get("./src/Database/migrations.txt");
+        List<String> lines = Files.readAllLines(path);
+
+        // Remove trailing empty lines
+        int lastNonEmptyLineIndex = lines.size() - 1;
+        while (lastNonEmptyLineIndex >= 0 && lines.get(lastNonEmptyLineIndex).trim().isEmpty()) {
+            lastNonEmptyLineIndex--;
         }
+        
+        // Retain only the non-empty lines
+        lines = lines.subList(0, lastNonEmptyLineIndex + 1);
+
+        // Add the new migration at the bottom
+        lines.add(migrationName);
+
+        Files.write(path, lines);
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
+}
 }
