@@ -4,41 +4,69 @@
  */
 package Utils;
 
-import java.security.*;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import java.security.SecureRandom;
+import java.util.Base64;
+import java.util.Arrays;
 
 /**
  *
  * @author user
  */
 public class PasswordUtils {
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        String passwordToHash = "your_password_here";
-        String salt = getSalt(); // Generate a random salt
-        String securePassword = get_SHA_512_SecurePassword(passwordToHash, salt);
-        System.out.println("Hashed Password: " + securePassword);
+
+    private static final int ITERATIONS = 10000;
+    private static final int KEY_LENGTH = 256;
+    private static final int SALT_LENGTH = 16;
+
+    // Hashes the password with a generated salt
+    public String hashPassword(String password) throws Exception {
+        byte[] salt = generateSalt();
+        byte[] hash = pbkdf2(password.toCharArray(), salt, ITERATIONS, KEY_LENGTH);
+        return Base64.getEncoder().encodeToString(salt) + ":" + Base64.getEncoder().encodeToString(hash);
     }
 
-    private static String get_SHA_512_SecurePassword(String password, String salt) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-512");
-        md.update(salt.getBytes());
-        byte[] hashedPassword = md.digest(password.getBytes());
-        return bytesToHex(hashedPassword);
-    }
-
-    private static String getSalt() {
-        SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[16];
-        random.nextBytes(salt);
-        return bytesToHex(salt);
-    }
-
-    private static String bytesToHex(byte[] bytes) {
-        StringBuilder result = new StringBuilder();
-        for (byte b : bytes) {
-            result.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
+    // Verifies the password against the stored hash
+    public boolean verifyPassword(String password, String storedHash) throws Exception {
+        String[] parts = storedHash.split(":");
+        if (parts.length != 2) {
+            throw new IllegalArgumentException("Stored hash is not in the correct format");
         }
-        return result.toString();
+        byte[] salt = Base64.getDecoder().decode(parts[0]);
+        byte[] hash = Base64.getDecoder().decode(parts[1]);
+
+        byte[] testHash = pbkdf2(password.toCharArray(), salt, ITERATIONS, KEY_LENGTH);
+        return Arrays.equals(hash, testHash);
+    }
+
+    // Generates a random salt
+    private byte[] generateSalt() throws Exception {
+        SecureRandom random = new SecureRandom();
+        byte[] salt = new byte[SALT_LENGTH];
+        random.nextBytes(salt);
+        return salt;
+    }
+
+    // Hashes the password using PBKDF2 with the provided salt
+    private byte[] pbkdf2(char[] password, byte[] salt, int iterations, int keyLength) throws Exception {
+        PBEKeySpec spec = new PBEKeySpec(password, salt, iterations, keyLength);
+        SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+        return skf.generateSecret(spec).getEncoded();
+    }
+    
+    public static void main(String[] args) {
+        try {
+            PasswordUtils hasher = new PasswordUtils();
+            String password = "mySecurePassword";
+            String hashedPassword = hasher.hashPassword(password);
+            System.out.println("Hashed Password: " + hashedPassword);
+
+            boolean isPasswordCorrect = hasher.verifyPassword(password, hashedPassword);
+            System.out.println("Password verification: " + isPasswordCorrect);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
-    
-
