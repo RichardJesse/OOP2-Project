@@ -6,3 +6,4 @@ CreateTicketsTable
 CreateTicketLevelTable
 AddAvailableTicketsToTicketLevelTable
 AddLocationToEventTable
+CreateUsersTable
