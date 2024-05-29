@@ -8,7 +8,13 @@ import LoginForm.forgotpassword;
 import LoginForm.signup;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import Utils.PasswordUtils;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import Database.DatabaseOperations;
+import Database.QueryBuilder;
 
 /**
  *
@@ -230,7 +236,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtusernameActionPerformed
 
     private void disableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableMouseClicked
-        txtpassword.setEchoChar((char)0);
+        txtpassword.setEchoChar((char) 0);
         disable.setVisible(false);
         disable.setEnabled(false);
         show.setEnabled(true);
@@ -238,7 +244,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_disableMouseClicked
 
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
-        txtpassword.setEchoChar((char)0);
+        txtpassword.setEchoChar((char) 0);
         disable.setVisible(true);
         disable.setEnabled(true);
         show.setEnabled(false);
@@ -247,17 +253,43 @@ public class login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JOptionPane.showInputDialog(null, "You are successfuly logged in");
+        String password = txtpassword.getText();
+        String username = txtusername.getText();
+        DatabaseOperations dbo = new DatabaseOperations();
+        QueryBuilder qb = new QueryBuilder();
+
+        PasswordUtils passwordHasher = new PasswordUtils();
+        try {
+            String hashedpass = passwordHasher.hashPassword(password);
+            System.out.println(hashedpass);
+
+            boolean re = dbo.checkIfRecordExist("users", "first_name", username);
+              String passwordHash = dbo.selectSingleValue("users", "password", "username", username);
+            
+            
+            boolean verifyPass = passwordHasher.verifyPassword(password, passwordHash);
+           
+
+            System.out.println(re);
+            System.out.println(verifyPass);
+
+        } catch (Exception ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         signup si = new signup();
-         si.setVisible(true);
+        signup si = new signup();
+
+        si.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         forgotpassword fo = new forgotpassword();
-         fo.setVisible(true);
-    
+        forgotpassword fo = new forgotpassword();
+        fo.setVisible(true);
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

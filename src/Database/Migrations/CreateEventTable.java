@@ -11,12 +11,15 @@ public class CreateEventTable  extends Migration {
             .string("event_name")
                 .unique()
                 .notNull()
+            .Enum("Genre", "coporate, adventure, concert")
             .string("avaliable_tickets").notNull()
             .text("event_description")
             .string("event_poster_path")
-            .timestamps() 
+            .timestamp("start_time").notNull()
+            .timestamp("end_date").notNull()
             .build();
         executeStatement(sql);
+        System.out.println(sql);
     }
 
     @Override

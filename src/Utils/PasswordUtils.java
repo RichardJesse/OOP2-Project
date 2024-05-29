@@ -31,8 +31,10 @@ public class PasswordUtils {
     public boolean verifyPassword(String password, String storedHash) throws Exception {
         String[] parts = storedHash.split(":");
         if (parts.length != 2) {
+             System.out.println(parts.length);
             throw new IllegalArgumentException("Stored hash is not in the correct format");
         }
+       
         byte[] salt = Base64.getDecoder().decode(parts[0]);
         byte[] hash = Base64.getDecoder().decode(parts[1]);
 
