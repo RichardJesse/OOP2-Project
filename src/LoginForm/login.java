@@ -8,7 +8,7 @@ import LoginForm.forgotpassword;
 import LoginForm.signup;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.PreparedStatement;
+import java.sql.*;
 import javax.swing.JOptionPane;
 import Utils.PasswordUtils;
 import java.util.logging.Level;
@@ -256,15 +256,19 @@ public class login extends javax.swing.JFrame {
             String hashedpass = passwordHasher.hashPassword(password);
             System.out.println(hashedpass);
 
-            boolean re = dbo.checkIfRecordExist("users", "first_name", username);
-              String passwordHash = dbo.selectSingleValue("users", "password", "username", username);
-            
-            
-            boolean verifyPass = passwordHasher.verifyPassword(password, passwordHash);
-           
-
-            System.out.println(re);
-            System.out.println(verifyPass);
+              PreparedStatement statement = qb.select("password").from("users").where("first_name", "=", username).build();
+              ResultSet resultSet = statement.executeQuery();
+              
+             
+               if (resultSet.next()) {
+                String passwordResult = resultSet.getString("password");
+                boolean passState = passwordHasher.verifyPassword(password, passwordResult);
+                System.out.println(passState);
+                System.out.println("Password: " + passwordResult);
+            } else {
+                System.out.println("No user found with the given username.");
+            }
+              
 
         } catch (Exception ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
