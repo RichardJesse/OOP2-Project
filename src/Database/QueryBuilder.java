@@ -77,7 +77,7 @@ public class QueryBuilder {
 
     public PreparedStatement build() throws SQLException {
         PreparedStatement preparedStatement = dbconnection.connection.prepareStatement(query.toString());
-        System.out.println("Final SQL query: " + query.toString());
+//        System.out.println("Final SQL query: " + query.toString());
         for (int i = 0; i < parameters.size(); i++) {
             preparedStatement.setObject(i + 1, parameters.get(i));
         }

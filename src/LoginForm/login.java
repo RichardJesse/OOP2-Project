@@ -5,16 +5,19 @@
 package LoginForm;
 
 import LoginForm.forgotpassword;
+import Models.UserModel;
 import LoginForm.signup;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import Service.UserService;
 import javax.swing.JOptionPane;
 import Utils.PasswordUtils;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Database.DatabaseOperations;
 import Database.QueryBuilder;
+import LessJava.*;
 
 /**
  *
@@ -22,10 +25,13 @@ import Database.QueryBuilder;
  */
 public class login extends javax.swing.JFrame {
 
+    UserAuthenticator userAuthenticator = new UserAuthenticator();
+
     /**
      * Creates new form login
      */
     public login() {
+
         initComponents();
     }
 
@@ -245,36 +251,25 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_showMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JOptionPane.showInputDialog(null, "You are successfuly logged in");
+
         String password = txtpassword.getText();
         String username = txtusername.getText();
-        DatabaseOperations dbo = new DatabaseOperations();
-        QueryBuilder qb = new QueryBuilder();
+        UserService userService = new UserService();
+         userService.setCurrentUserByEmail("jesee@gmail.com");
+         UserModel currentUser = userService.getCurrentUser();
+        System.out.println("Current User: " + currentUser.getEmail());
 
-        PasswordUtils passwordHasher = new PasswordUtils();
-        try {
-            String hashedpass = passwordHasher.hashPassword(password);
-            System.out.println(hashedpass);
+        // Remove the current user from the session
+        userService.removeCurrentUser();
+        UserModel removedUser = userService.getCurrentUser();
+        System.out.println("User after removal: " + removedUser);
+        boolean isUserValid = userAuthenticator.CheckPasswordAndUserName(username, password);
 
-              PreparedStatement statement = qb.select("password").from("users").where("first_name", "=", username).build();
-              ResultSet resultSet = statement.executeQuery();
-              
-             
-               if (resultSet.next()) {
-                String passwordResult = resultSet.getString("password");
-                boolean passState = passwordHasher.verifyPassword(password, passwordResult);
-                System.out.println(passState);
-                System.out.println("Password: " + passwordResult);
-            } else {
-                System.out.println("No user found with the given username.");
-            }
-              
-
-        } catch (Exception ex) {
-            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        if (isUserValid) {
+            JOptionPane.showMessageDialog(null, "You are successfully logged in");
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid username or password");
         }
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
