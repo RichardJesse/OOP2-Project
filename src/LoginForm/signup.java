@@ -12,11 +12,9 @@ import javax.swing.JOptionPane;
  */
 public class signup extends javax.swing.JFrame {
 
-    /**
-     * Creates new form signup
-     */
     public signup() {
         initComponents();
+      
     }
 
     /**
@@ -35,10 +33,7 @@ public class signup extends javax.swing.JFrame {
         txtpassword = new javax.swing.JPasswordField();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
-        signupanel1 = new javax.swing.JPanel();
-        lblimg = new javax.swing.JLabel();
         signupanel2 = new javax.swing.JPanel();
-        lbltitle = new javax.swing.JLabel();
         lblsignup = new javax.swing.JLabel();
         lblemail = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
@@ -49,6 +44,13 @@ public class signup extends javax.swing.JFrame {
         setconfirmpass = new javax.swing.JPasswordField();
         txtsetuser = new javax.swing.JTextField();
         signupbtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lbltitle = new javax.swing.JLabel();
+        stmt1 = new javax.swing.JLabel();
+        stmt3 = new javax.swing.JLabel();
+        stmt2 = new javax.swing.JLabel();
+        stmt4 = new javax.swing.JLabel();
+        loginaccess = new javax.swing.JButton();
 
         jLabel3.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,43 +97,18 @@ public class signup extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        signupanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg3.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout signupanel1Layout = new javax.swing.GroupLayout(signupanel1);
-        signupanel1.setLayout(signupanel1Layout);
-        signupanel1Layout.setHorizontalGroup(
-            signupanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signupanel1Layout.createSequentialGroup()
-                .addComponent(lblimg, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        signupanel1Layout.setVerticalGroup(
-            signupanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signupanel1Layout.createSequentialGroup()
-                .addComponent(lblimg, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(signupanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, -1));
-
-        signupanel2.setBackground(new java.awt.Color(0, 0, 0));
-
-        lbltitle.setFont(new java.awt.Font("Ravie", 3, 36)); // NOI18N
-        lbltitle.setForeground(new java.awt.Color(204, 204, 0));
-        lbltitle.setText("TIKOPAP");
+        signupanel2.setBackground(new java.awt.Color(244, 239, 230));
 
         lblsignup.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
-        lblsignup.setForeground(new java.awt.Color(255, 255, 255));
+        lblsignup.setForeground(new java.awt.Color(94, 108, 91));
         lblsignup.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblsignup.setText("SIGN UP");
 
         lblemail.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblemail.setForeground(new java.awt.Color(255, 255, 255));
+        lblemail.setForeground(new java.awt.Color(94, 108, 91));
         lblemail.setText("Enter Email");
 
-        txtemail.setBackground(new java.awt.Color(0, 0, 0));
+        txtemail.setBackground(new java.awt.Color(244, 239, 230));
         txtemail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtemail.setForeground(new java.awt.Color(255, 255, 255));
         txtemail.addActionListener(new java.awt.event.ActionListener() {
@@ -141,26 +118,26 @@ public class signup extends javax.swing.JFrame {
         });
 
         lblsetuser.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblsetuser.setForeground(new java.awt.Color(255, 255, 255));
+        lblsetuser.setForeground(new java.awt.Color(94, 108, 91));
         lblsetuser.setText("Enter Preferred Username");
 
         lblsetpass.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblsetpass.setForeground(new java.awt.Color(255, 255, 255));
+        lblsetpass.setForeground(new java.awt.Color(94, 108, 91));
         lblsetpass.setText("Set Password");
 
-        txtsetpass.setBackground(new java.awt.Color(0, 0, 0));
+        txtsetpass.setBackground(new java.awt.Color(244, 239, 230));
         txtsetpass.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtsetpass.setForeground(new java.awt.Color(255, 255, 255));
 
         lblconfirmpass.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblconfirmpass.setForeground(new java.awt.Color(255, 255, 255));
+        lblconfirmpass.setForeground(new java.awt.Color(94, 108, 91));
         lblconfirmpass.setText("Confirm Password");
 
-        setconfirmpass.setBackground(new java.awt.Color(0, 0, 0));
+        setconfirmpass.setBackground(new java.awt.Color(244, 239, 230));
         setconfirmpass.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         setconfirmpass.setForeground(new java.awt.Color(255, 255, 255));
 
-        txtsetuser.setBackground(new java.awt.Color(0, 0, 0));
+        txtsetuser.setBackground(new java.awt.Color(244, 239, 230));
         txtsetuser.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtsetuser.setForeground(new java.awt.Color(255, 255, 255));
         txtsetuser.addActionListener(new java.awt.event.ActionListener() {
@@ -169,9 +146,9 @@ public class signup extends javax.swing.JFrame {
             }
         });
 
-        signupbtn.setBackground(new java.awt.Color(153, 153, 0));
+        signupbtn.setBackground(new java.awt.Color(214, 224, 226));
         signupbtn.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
-        signupbtn.setForeground(new java.awt.Color(255, 255, 255));
+        signupbtn.setForeground(new java.awt.Color(94, 108, 91));
         signupbtn.setText("SIGN UP");
         signupbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,41 +163,36 @@ public class signup extends javax.swing.JFrame {
             .addGroup(signupanel2Layout.createSequentialGroup()
                 .addGroup(signupanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(signupanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(signupanel2Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(123, 123, 123)
                         .addGroup(signupanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblemail, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblsetuser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(setconfirmpass, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblconfirmpass, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtsetpass, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblemail, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblsetpass, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblsetuser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtsetuser, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(signupanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(196, 196, 196)
+                        .addComponent(signupbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(signupanel2Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(signupbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(lblsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         signupanel2Layout.setVerticalGroup(
             signupanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signupanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(53, 53, 53)
                 .addComponent(lblsignup)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addComponent(lblemail, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblsetuser, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtsetuser, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblsetpass, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,10 +204,94 @@ public class signup extends javax.swing.JFrame {
                 .addComponent(setconfirmpass, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(signupbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        getContentPane().add(signupanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 430, 520));
+        getContentPane().add(signupanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, -20, 590, 520));
+
+        jPanel1.setBackground(new java.awt.Color(104, 104, 103));
+
+        lbltitle.setFont(new java.awt.Font("Algerian", 3, 48)); // NOI18N
+        lbltitle.setForeground(new java.awt.Color(22, 42, 44));
+        lbltitle.setText("TIKOPAP");
+
+        stmt1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        stmt1.setForeground(new java.awt.Color(255, 255, 255));
+        stmt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stmt1.setText("WE MISSED YOU!");
+
+        stmt3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        stmt3.setForeground(new java.awt.Color(255, 255, 255));
+        stmt3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stmt3.setText("Exciting new updates and content");
+
+        stmt2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        stmt2.setForeground(new java.awt.Color(255, 255, 255));
+        stmt2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stmt2.setText("Come back and see what's new");
+        stmt2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        stmt4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        stmt4.setForeground(new java.awt.Color(255, 255, 255));
+        stmt4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stmt4.setText("awaits!");
+
+        loginaccess.setBackground(new java.awt.Color(244, 239, 230));
+        loginaccess.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
+        loginaccess.setText("LOG IN");
+        loginaccess.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginaccessMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(stmt2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(stmt4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(stmt3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(loginaccess)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(stmt1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(stmt1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stmt2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stmt3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(stmt4)
+                .addGap(23, 23, 23)
+                .addComponent(loginaccess)
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -248,17 +304,22 @@ public class signup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtemailActionPerformed
+    private void signupbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbtnActionPerformed
+        JOptionPane.showInputDialog(null, "You are successfuly logged in");
+    }//GEN-LAST:event_signupbtnActionPerformed
 
     private void txtsetuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsetuserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtsetuserActionPerformed
 
-    private void signupbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupbtnActionPerformed
-         JOptionPane.showInputDialog(null, "You are successfuly logged in");
-    }//GEN-LAST:event_signupbtnActionPerformed
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
+
+    private void loginaccessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginaccessMouseClicked
+        login lo = new login();
+        lo.setVisible(true);
+    }//GEN-LAST:event_loginaccessMouseClicked
 
     /**
      * @param args the command line arguments
@@ -301,17 +362,21 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblconfirmpass;
     private javax.swing.JLabel lblemail;
-    private javax.swing.JLabel lblimg;
     private javax.swing.JLabel lblsetpass;
     private javax.swing.JLabel lblsetuser;
     private javax.swing.JLabel lblsignup;
     private javax.swing.JLabel lbltitle;
+    private javax.swing.JButton loginaccess;
     private javax.swing.JPasswordField setconfirmpass;
-    private javax.swing.JPanel signupanel1;
     private javax.swing.JPanel signupanel2;
     private javax.swing.JButton signupbtn;
+    private javax.swing.JLabel stmt1;
+    private javax.swing.JLabel stmt2;
+    private javax.swing.JLabel stmt3;
+    private javax.swing.JLabel stmt4;
     private javax.swing.JTextField txtemail;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JPasswordField txtsetpass;

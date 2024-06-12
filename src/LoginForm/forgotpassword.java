@@ -31,10 +31,9 @@ public class forgotpassword extends javax.swing.JFrame {
         txtusername1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtusername2 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        lblimg1 = new javax.swing.JLabel();
+        resetpanel1 = new javax.swing.JPanel();
+        lbltitle2 = new javax.swing.JLabel();
         resetpanel2 = new javax.swing.JPanel();
-        lbltitle = new javax.swing.JLabel();
         lblreset = new javax.swing.JLabel();
         lblsetnewpass = new javax.swing.JLabel();
         txtsetnewpass = new javax.swing.JTextField();
@@ -75,39 +74,43 @@ public class forgotpassword extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblimg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg3.jpg"))); // NOI18N
+        resetpanel1.setBackground(new java.awt.Color(104, 104, 103));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblimg1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, Short.MAX_VALUE)
+        lbltitle2.setFont(new java.awt.Font("Algerian", 3, 48)); // NOI18N
+        lbltitle2.setForeground(new java.awt.Color(22, 42, 44));
+        lbltitle2.setText("TIKOPAP");
+
+        javax.swing.GroupLayout resetpanel1Layout = new javax.swing.GroupLayout(resetpanel1);
+        resetpanel1.setLayout(resetpanel1Layout);
+        resetpanel1Layout.setHorizontalGroup(
+            resetpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resetpanel1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(lbltitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lblimg1, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+        resetpanel1Layout.setVerticalGroup(
+            resetpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(resetpanel1Layout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addComponent(lbltitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 520));
+        getContentPane().add(resetpanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 480));
 
-        resetpanel2.setBackground(new java.awt.Color(0, 0, 0));
-
-        lbltitle.setFont(new java.awt.Font("Ravie", 3, 36)); // NOI18N
-        lbltitle.setForeground(new java.awt.Color(204, 204, 0));
-        lbltitle.setText("TIKOPAP");
+        resetpanel2.setBackground(new java.awt.Color(244, 239, 230));
 
         lblreset.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
-        lblreset.setForeground(new java.awt.Color(255, 255, 255));
+        lblreset.setForeground(new java.awt.Color(104, 104, 103));
         lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset.setText("PASSWORD RESET");
 
         lblsetnewpass.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblsetnewpass.setForeground(new java.awt.Color(255, 255, 255));
+        lblsetnewpass.setForeground(new java.awt.Color(104, 104, 103));
         lblsetnewpass.setText("Enter New Password");
 
-        txtsetnewpass.setBackground(new java.awt.Color(0, 0, 0));
+        txtsetnewpass.setBackground(new java.awt.Color(244, 239, 230));
         txtsetnewpass.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtsetnewpass.setForeground(new java.awt.Color(255, 255, 255));
         txtsetnewpass.addActionListener(new java.awt.event.ActionListener() {
@@ -117,10 +120,10 @@ public class forgotpassword extends javax.swing.JFrame {
         });
 
         lblconfirmnewpass.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblconfirmnewpass.setForeground(new java.awt.Color(255, 255, 255));
+        lblconfirmnewpass.setForeground(new java.awt.Color(104, 104, 103));
         lblconfirmnewpass.setText("Confirm New Password");
 
-        txtconfirmnewpass.setBackground(new java.awt.Color(0, 0, 0));
+        txtconfirmnewpass.setBackground(new java.awt.Color(244, 239, 230));
         txtconfirmnewpass.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtconfirmnewpass.setForeground(new java.awt.Color(255, 255, 255));
         txtconfirmnewpass.addActionListener(new java.awt.event.ActionListener() {
@@ -129,9 +132,9 @@ public class forgotpassword extends javax.swing.JFrame {
             }
         });
 
-        btnreset.setBackground(new java.awt.Color(204, 204, 0));
+        btnreset.setBackground(new java.awt.Color(214, 224, 226));
         btnreset.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
-        btnreset.setForeground(new java.awt.Color(255, 255, 255));
+        btnreset.setForeground(new java.awt.Color(104, 104, 103));
         btnreset.setText("RESET");
         btnreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,49 +146,43 @@ public class forgotpassword extends javax.swing.JFrame {
         resetpanel2.setLayout(resetpanel2Layout);
         resetpanel2Layout.setHorizontalGroup(
             resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resetpanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(158, 158, 158))
             .addGroup(resetpanel2Layout.createSequentialGroup()
                 .addGroup(resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(resetpanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(resetpanel2Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(resetpanel2Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(lblreset, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblreset, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(resetpanel2Layout.createSequentialGroup()
+                                .addGap(133, 133, 133)
+                                .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(resetpanel2Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         resetpanel2Layout.setVerticalGroup(
             resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(resetpanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(72, 72, 72)
                 .addComponent(lblreset)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addComponent(lblsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(31, 31, 31)
                 .addComponent(lblconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txtconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(40, 40, 40)
                 .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
-        getContentPane().add(resetpanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 460, 490));
+        getContentPane().add(resetpanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 460, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -251,12 +248,11 @@ public class forgotpassword extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblconfirmnewpass;
-    private javax.swing.JLabel lblimg1;
     private javax.swing.JLabel lblreset;
     private javax.swing.JLabel lblsetnewpass;
-    private javax.swing.JLabel lbltitle;
+    private javax.swing.JLabel lbltitle2;
+    private javax.swing.JPanel resetpanel1;
     private javax.swing.JPanel resetpanel2;
     private javax.swing.JTextField txtconfirmnewpass;
     private javax.swing.JTextField txtsetnewpass;
