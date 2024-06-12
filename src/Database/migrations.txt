@@ -4,6 +4,4 @@ CreateEventOrganizerTable
 CreateEventTable
 CreateTicketsTable
 CreateTicketLevelTable
-AddAvailableTicketsToTicketLevelTable
-AddLocationToEventTable
-CreateUsersTable
+

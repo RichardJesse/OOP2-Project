@@ -5,10 +5,19 @@
 package LoginForm;
 
 import LoginForm.forgotpassword;
+import Models.UserModel;
 import LoginForm.signup;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
+import Service.UserService;
 import javax.swing.JOptionPane;
+import Utils.PasswordUtils;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import Database.DatabaseOperations;
+import Database.QueryBuilder;
+import LessJava.*;
 
 /**
  *
@@ -16,10 +25,13 @@ import javax.swing.JOptionPane;
  */
 public class login extends javax.swing.JFrame {
 
+    UserAuthenticator userAuthenticator = new UserAuthenticator();
+
     /**
      * Creates new form login
      */
     public login() {
+
         initComponents();
     }
 
@@ -277,6 +289,67 @@ public class login extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+<<<<<<< HEAD
+=======
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusernameActionPerformed
+
+    private void disableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableMouseClicked
+        txtpassword.setEchoChar((char) 0);
+        disable.setVisible(false);
+        disable.setEnabled(false);
+        show.setEnabled(true);
+        show.setEnabled(true);
+    }//GEN-LAST:event_disableMouseClicked
+
+    private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
+        txtpassword.setEchoChar((char) 0);
+        disable.setVisible(true);
+        disable.setEnabled(true);
+        show.setEnabled(false);
+        show.setEnabled(false);
+    }//GEN-LAST:event_showMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        String password = txtpassword.getText();
+        String username = txtusername.getText();
+        UserService userService = new UserService();
+         userService.setCurrentUserByEmail("jesee@gmail.com");
+         UserModel currentUser = userService.getCurrentUser();
+        System.out.println("Current User: " + currentUser.getEmail());
+
+        // Remove the current user from the session
+        userService.removeCurrentUser();
+        UserModel removedUser = userService.getCurrentUser();
+        System.out.println("User after removal: " + removedUser);
+        boolean isUserValid = userAuthenticator.CheckPasswordAndUserName(username, password);
+
+        if (isUserValid) {
+            JOptionPane.showMessageDialog(null, "You are successfully logged in");
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid username or password");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        signup si = new signup();
+
+        si.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        forgotpassword fo = new forgotpassword();
+        fo.setVisible(true);
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+>>>>>>> 57d4e6bf2cba74a6262e73d32b8109714569180f
     /**
      * @param args the command line arguments
      */

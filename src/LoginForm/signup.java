@@ -5,6 +5,8 @@
 package LoginForm;
 
 import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -97,7 +99,52 @@ public class signup extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+<<<<<<< HEAD
         signupanel2.setBackground(new java.awt.Color(244, 239, 230));
+=======
+        signupanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg3.jpg"))); // NOI18N
+
+<<<<<<< HEAD
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+=======
+        javax.swing.GroupLayout signupanel1Layout = new javax.swing.GroupLayout(signupanel1);
+        signupanel1.setLayout(signupanel1Layout);
+        signupanel1Layout.setHorizontalGroup(
+            signupanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signupanel1Layout.createSequentialGroup()
+                .addComponent(lblimg, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        signupanel1Layout.setVerticalGroup(
+            signupanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signupanel1Layout.createSequentialGroup()
+                .addComponent(lblimg, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+>>>>>>> 8d17ee31670de787caeb84176527eeb39e297d7c
+        );
+
+        getContentPane().add(signupanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, -1));
+
+        signupanel2.setBackground(new java.awt.Color(0, 0, 0));
+
+        lbltitle.setFont(new java.awt.Font("Ravie", 3, 36)); // NOI18N
+        lbltitle.setForeground(new java.awt.Color(204, 204, 0));
+        lbltitle.setText("TIKOPAP");
+>>>>>>> 57d4e6bf2cba74a6262e73d32b8109714569180f
 
         lblsignup.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
         lblsignup.setForeground(new java.awt.Color(94, 108, 91));
@@ -156,6 +203,29 @@ public class signup extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtpassword3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtpassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtusername1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtusername2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+=======
         javax.swing.GroupLayout signupanel2Layout = new javax.swing.GroupLayout(signupanel2);
         signupanel2.setLayout(signupanel2Layout);
         signupanel2Layout.setHorizontalGroup(
@@ -163,7 +233,15 @@ public class signup extends javax.swing.JFrame {
             .addGroup(signupanel2Layout.createSequentialGroup()
                 .addGroup(signupanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(signupanel2Layout.createSequentialGroup()
+<<<<<<< HEAD
                         .addGap(123, 123, 123)
+=======
+>>>>>>> 8d17ee31670de787caeb84176527eeb39e297d7c
+                        .addContainerGap()
+                        .addComponent(lbltitle, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(signupanel2Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+>>>>>>> 57d4e6bf2cba74a6262e73d32b8109714569180f
                         .addGroup(signupanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblemail, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)

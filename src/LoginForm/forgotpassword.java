@@ -4,11 +4,16 @@
  */
 package LoginForm;
 
+import Utils.PasswordUtils;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP
  */
 public class forgotpassword extends javax.swing.JFrame {
+
+    PasswordUtils verifyPassword = new PasswordUtils();
 
     /**
      * Creates new form forgotpassword
@@ -204,8 +209,27 @@ public class forgotpassword extends javax.swing.JFrame {
     }//GEN-LAST:event_txtconfirmnewpassActionPerformed
 
     private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresetActionPerformed
-        login lo = new login();
-         lo.setVisible(true);
+
+        String newPassword = txtsetnewpass.getText();
+        String passConfirmation = txtconfirmnewpass.getText();
+
+        System.out.println(newPassword);
+        boolean validPass = verifyPassword.validatePassword(newPassword);
+       
+        if (validPass) {
+            if (newPassword == null ? passConfirmation != null : !newPassword.equals(passConfirmation)) {
+                JOptionPane.showMessageDialog(null, "Passwords do not match");
+                return;
+            }
+            //        login lo = new login();
+//         lo.setVisible(true);
+
+            JOptionPane.showMessageDialog(null, "Passwords match");
+        }
+
+        JOptionPane.showMessageDialog(null, "Password you entered is not valid");
+
+
     }//GEN-LAST:event_btnresetActionPerformed
 
     /**
@@ -242,6 +266,7 @@ public class forgotpassword extends javax.swing.JFrame {
             }
         });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnreset;

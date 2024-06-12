@@ -29,8 +29,13 @@ public class QueryBuilder {
     }
 
     public QueryBuilder where(String column, String operator, Object value) {
-        query.append("WHERE ").append(column).append(" ").append(operator).append(" ? ");
+        query.append("WHERE ").append(column).append(" ").append(operator).append(" ?  ");
         parameters.add(value);
+        return this;
+    }
+
+    public QueryBuilder where(String condition) {
+        query.append("WHERE ").append(condition).append("  ");
         return this;
     }
 
@@ -66,12 +71,17 @@ public class QueryBuilder {
         return this;
     }
 
+    public String toString() {
+        return query.toString().trim();
+    }
+
     public PreparedStatement build() throws SQLException {
         PreparedStatement preparedStatement = dbconnection.connection.prepareStatement(query.toString());
-        System.out.println("Final SQL query: " + query.toString());
+//        System.out.println("Final SQL query: " + query.toString());
         for (int i = 0; i < parameters.size(); i++) {
             preparedStatement.setObject(i + 1, parameters.get(i));
         }
         return preparedStatement;
     }
+
 }
