@@ -6,6 +6,7 @@ package LoginForm;
 
 import Utils.PasswordUtils;
 import javax.swing.JOptionPane;
+import raven.toast.Notifications;
 
 /**
  *
@@ -20,6 +21,8 @@ public class forgotpassword extends javax.swing.JFrame {
      */
     public forgotpassword() {
         initComponents();
+        Notifications.getInstance().setJFrame(this);
+
     }
 
     /**
@@ -218,16 +221,17 @@ public class forgotpassword extends javax.swing.JFrame {
        
         if (validPass) {
             if (newPassword == null ? passConfirmation != null : !newPassword.equals(passConfirmation)) {
-                JOptionPane.showMessageDialog(null, "Passwords do not match");
+//                JOptionPane.showMessageDialog(null, "Passwords do not match");
+                 Notifications.getInstance().show(Notifications.Type.ERROR,Notifications.Location.TOP_RIGHT, "Passwords do not match");
                 return;
             }
             //        login lo = new login();
 //         lo.setVisible(true);
 
-            JOptionPane.showMessageDialog(null, "Passwords match");
+             Notifications.getInstance().show(Notifications.Type.SUCCESS,Notifications.Location.TOP_RIGHT, "Passwords match");
         }
 
-        JOptionPane.showMessageDialog(null, "Password you entered is not valid");
+         Notifications.getInstance().show(Notifications.Type.ERROR,Notifications.Location.TOP_RIGHT, "Passwords you entered is not vaid");
 
 
     }//GEN-LAST:event_btnresetActionPerformed

@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import Database.DatabaseOperations;
 import Database.QueryBuilder;
 import LessJava.*;
+import raven.toast.Notifications;
 
 /**
  *
@@ -33,12 +34,13 @@ public class login extends javax.swing.JFrame {
     public login() {
 
         initComponents();
+        Notifications.getInstance().setJFrame(this);
     }
 
     login(String slide_1) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -271,8 +273,28 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-   JOptionPane.showInputDialog(null, "You are successfuly logged in");
-                                         
+        String password = txtpassword.getText();
+        String username = txtusername.getText();
+        UserService userService = new UserService();
+        userService.setCurrentUserByEmail("jesee@gmail.com");
+        UserModel currentUser = userService.getCurrentUser();
+        System.out.println("Current User: " + currentUser.getEmail());
+
+        // Remove the current user from the session
+        userService.removeCurrentUser();
+        UserModel removedUser = userService.getCurrentUser();
+        System.out.println("User after removal: " + removedUser);
+        boolean isUserValid = userAuthenticator.CheckPasswordAndUserName(username, password);
+
+        if (isUserValid) {
+//            JOptionPane.showMessageDialog(null, "You are successfully logged in");
+            Notifications.getInstance().show(Notifications.Type.SUCCESS, "You are successfully logged in");
+        } else {
+//            JOptionPane.showMessageDialog(null, "Invalid username or password");
+            Notifications.getInstance().show(Notifications.Type.ERROR, "Invalid username or password");
+
+        }
+
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void signupaccessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupaccessMouseClicked
@@ -281,16 +303,15 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_signupaccessMouseClicked
 
     private void forgotpassaccessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpassaccessMouseClicked
-      forgotpassword fo = new forgotpassword();
-      fo.setVisible(true);        // TODO add your handling code here:
+        forgotpassword fo = new forgotpassword();
+        fo.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_forgotpassaccessMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel2MouseClicked
 
-<<<<<<< HEAD
-=======
+
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
@@ -320,8 +341,8 @@ public class login extends javax.swing.JFrame {
         String password = txtpassword.getText();
         String username = txtusername.getText();
         UserService userService = new UserService();
-         userService.setCurrentUserByEmail("jesee@gmail.com");
-         UserModel currentUser = userService.getCurrentUser();
+        userService.setCurrentUserByEmail("jesee@gmail.com");
+        UserModel currentUser = userService.getCurrentUser();
         System.out.println("Current User: " + currentUser.getEmail());
 
         // Remove the current user from the session
@@ -331,7 +352,8 @@ public class login extends javax.swing.JFrame {
         boolean isUserValid = userAuthenticator.CheckPasswordAndUserName(username, password);
 
         if (isUserValid) {
-            JOptionPane.showMessageDialog(null, "You are successfully logged in");
+//            JOptionPane.showMessageDialog(null, "You are successfully logged in");
+            Notifications.getInstance().show(Notifications.Type.SUCCESS, "You are successfully logged in");
         } else {
             JOptionPane.showMessageDialog(null, "Invalid username or password");
         }
@@ -349,7 +371,6 @@ public class login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
->>>>>>> 57d4e6bf2cba74a6262e73d32b8109714569180f
     /**
      * @param args the command line arguments
      */
