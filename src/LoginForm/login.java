@@ -290,7 +290,11 @@ public class login extends javax.swing.JFrame {
 
         if (isUserValid) {
 //            JOptionPane.showMessageDialog(null, "You are successfully logged in");
+            examplePage ep = new examplePage();
+            ep.setVisible(true);
             Notifications.getInstance().show(Notifications.Type.SUCCESS, "You are successfully logged in");
+
+            this.setVisible(false);
         } else {
 //            JOptionPane.showMessageDialog(null, "Invalid username or password");
             Notifications.getInstance().show(Notifications.Type.ERROR, "Invalid username or password");
