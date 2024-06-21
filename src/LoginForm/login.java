@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import Database.DatabaseOperations;
 import Database.QueryBuilder;
 import LessJava.*;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import raven.toast.Notifications;
 
 /**
@@ -34,6 +35,7 @@ public class login extends javax.swing.JFrame {
     public login() {
 
         initComponents();
+        FlatIntelliJLaf.setup();
         Notifications.getInstance().setJFrame(this);
     }
 
