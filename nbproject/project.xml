@@ -12,45 +12,5 @@
             </test-roots>
         </data>
     </configuration>
-
-    <dependency>
-    <groupId>raven.toast</groupId>
-    <artifactId>swing-toast-notifications</artifactId>
-    <version>1.0.3</version>
-    <scope>system</scope>
-    <systemPath>${basedir}/library/swing-toast-notifications-1.0.3.jar</systemPath>
-</dependency>
-
-    <dependency>
-  <groupId>com.formdev</groupId>
-  <artifactId>flatlaf</artifactId>
-  <version>3.4.1</version>
-</dependency>
-
-<dependency>
-  <groupId>com.formdev</groupId>
-  <artifactId>flatlaf-extras</artifactId>
-  <version>3.4.1</version>
-</dependency>
-
- <dependencies>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20171018</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>3.9.0</version>
-        </dependency>
-
-    </dependencies>
-
-    <dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-text</artifactId>
-    <version>1.9</version>
-</dependency>
-
+    
 </project>

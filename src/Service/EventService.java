@@ -4,6 +4,7 @@ import Database.QueryBuilder;
 import Models.EventModel;
 import Models.UserModel;
 import Utils.SessionManager;
+import org.apache.commons.text.similarity.LevenshteinDistance;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
