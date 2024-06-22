@@ -12,10 +12,12 @@ public class QueryBuilder {
     DatabaseConnection dbconnection = new DatabaseConnection();
     private StringBuilder query;
     private List<Object> parameters;
+    private boolean hasWhereClause;
 
     public QueryBuilder() {
         this.query = new StringBuilder();
         this.parameters = new ArrayList<>();
+        this.hasWhereClause = false;
     }
 
     public QueryBuilder select(String column) {
@@ -29,13 +31,26 @@ public class QueryBuilder {
     }
 
     public QueryBuilder where(String column, String operator, Object value) {
-        query.append("WHERE ").append(column).append(" ").append(operator).append(" ?  ");
+        if (!hasWhereClause) {
+            query.append("WHERE ");
+            hasWhereClause = true;
+        } else {
+            query.append("AND ");
+        }
+        query.append(column).append(" ").append(operator).append(" ? ");
         parameters.add(value);
         return this;
     }
 
-    public QueryBuilder where(String condition) {
-        query.append("WHERE ").append(condition).append("  ");
+    public QueryBuilder orWhere(String column, String operator, Object value) {
+        if (!hasWhereClause) {
+            query.append("WHERE ");
+            hasWhereClause = true;
+        } else {
+            query.append("OR ");
+        }
+        query.append(column).append(" ").append(operator).append(" ? ");
+        parameters.add(value);
         return this;
     }
 
@@ -77,7 +92,6 @@ public class QueryBuilder {
 
     public PreparedStatement build() throws SQLException {
         PreparedStatement preparedStatement = dbconnection.connection.prepareStatement(query.toString());
-//        System.out.println("Final SQL query: " + query.toString());
         for (int i = 0; i < parameters.size(); i++) {
             preparedStatement.setObject(i + 1, parameters.get(i));
         }

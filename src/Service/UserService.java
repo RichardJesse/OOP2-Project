@@ -16,9 +16,10 @@ import java.sql.SQLException;
  * @author user
  */
 public class UserService {
-     private static final String CURRENT_USER_KEY = "currentUser";
-     
-      public UserModel getCurrentUserDetails(String email) {
+
+    private static final String CURRENT_USER_KEY = "currentUser";
+
+    public UserModel getCurrentUserDetails(String email) {
 
         QueryBuilder queryBuilder = new QueryBuilder();
 
@@ -47,7 +48,7 @@ public class UserService {
         return null;
 
     }
-    
+
     public void setCurrentUserByEmail(String email) {
         UserModel user = getCurrentUserDetails(email);
         if (user != null) {
@@ -56,7 +57,7 @@ public class UserService {
             System.out.println("User not found with email: " + email);
         }
     }
-    
+
     public UserModel getCurrentUser() {
         return (UserModel) SessionManager.getInstance().getAttribute(CURRENT_USER_KEY);
     }
@@ -64,7 +65,5 @@ public class UserService {
     public void removeCurrentUser() {
         SessionManager.getInstance().removeAttribute(CURRENT_USER_KEY);
     }
-    
-    
-    
+
 }
