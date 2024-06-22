@@ -4,7 +4,6 @@ import Database.QueryBuilder;
 import Models.EventModel;
 import Models.UserModel;
 import Utils.SessionManager;
-import org.apache.commons.text.similarity.LevenshteinDistance;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +16,7 @@ public class EventService {
     private static final String EVENT = "Event";
 
     public List<EventModel> searchEvents(String searchTerm) {
-        List<EventModel> events = new ArrayList<>();
+        List<EventModel> matchedEvents = new ArrayList<>();
 
         QueryBuilder queryBuilder = new QueryBuilder();
 
@@ -25,10 +24,12 @@ public class EventService {
             PreparedStatement statement = queryBuilder
                     .select("*")
                     .from("event")
-                    .orWhere("event_name", "LIKE", "%" + searchTerm + "%")
-                    .orWhere("genre", "LIKE", "%" + searchTerm + "%")
-                    .orWhere("event_description", "LIKE", "%" + searchTerm + "%")
+                    .soundex("event_name", searchTerm)
+                    .soundex("genre", searchTerm)
+                    .soundex("event_description", searchTerm)
                     .build();
+
+            System.out.println(statement);
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -37,13 +38,14 @@ public class EventService {
                 String genre = resultSet.getString("genre");
                 String eventDescription = resultSet.getString("event_description");
 
-                events.add(new EventModel(eventName, genre, eventDescription));
+                EventModel event = new EventModel(eventName, genre, eventDescription);
+                matchedEvents.add(event);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return events;
+        return matchedEvents;
     }
 
     public EventModel getEventDetails(String eventName) {

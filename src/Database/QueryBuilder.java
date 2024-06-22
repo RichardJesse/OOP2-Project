@@ -42,6 +42,17 @@ public class QueryBuilder {
         return this;
     }
 
+    public QueryBuilder soundex(String column, String searchTerm) {
+        if (query.indexOf("WHERE") == -1) {
+            query.append("WHERE ");
+        } else {
+            query.append("OR ");
+        }
+        query.append("SOUNDEX(").append(column).append(") = SOUNDEX(?) ");
+        parameters.add(searchTerm);
+        return this;
+    }
+
     public QueryBuilder orWhere(String column, String operator, Object value) {
         if (!hasWhereClause) {
             query.append("WHERE ");
