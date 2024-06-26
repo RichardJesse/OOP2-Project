@@ -5,3 +5,6 @@ CreateEventTable
 CreateTicketsTable
 CreateTicketLevelTable
 CreateAnisaTable
+AddAvailableTicketsToTicketLevelTable
+AddLocationToEventTable
+CreateUsersTable

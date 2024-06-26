@@ -31,14 +31,14 @@ public class TicketAppStartPage extends JFrame {
         // Application name label as background
         JLabel backgroundLabel = new JLabel("<html><center>Tikopap<br><br><br>Welcome to Tikopap!<br>Your go-to platform for all your event needs.</center></html>", SwingConstants.CENTER);
         backgroundLabel.setFont(new Font("Algerian", Font.BOLD, 40));
-        backgroundLabel.setForeground(Color.decode("#FFD700")); // Grey color
-        backgroundLabel.setBackground(Color.decode("#000000")); 
+        backgroundLabel.setForeground(Color.decode("#FEFCF6")); // Grey color
+        backgroundLabel.setBackground(Color.decode("#686867")); 
         backgroundLabel.setOpaque(true);
        
         
         // Navigation panel
         navPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        navPanel.setBackground(Color.decode("#e9e4f0"));
+        navPanel.setBackground(Color.decode("#FEFCF6"));
         setSize(800, 600);
 
         // Buttons and search bar

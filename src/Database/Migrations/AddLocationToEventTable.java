@@ -1,13 +1,10 @@
 package Database.Migrations;
 import Database.*;
-public class CreateUsersTable  extends Migration {
+public class AddLocationToEventTable  extends Migration {
     @Override
     public void up() {
-        String sql = createTable("users")
-            .id()
-            .build();
-        executeStatement(sql);
-    }
+      addColumn("event", "location", "TEXT");
+         }
 
     @Override
     public void down() {
