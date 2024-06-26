@@ -12,10 +12,12 @@ public class QueryBuilder {
     DatabaseConnection dbconnection = new DatabaseConnection();
     private StringBuilder query;
     private List<Object> parameters;
+    private boolean hasWhereClause;
 
     public QueryBuilder() {
         this.query = new StringBuilder();
         this.parameters = new ArrayList<>();
+        this.hasWhereClause = false;
     }
 
     public QueryBuilder select(String column) {
@@ -29,7 +31,36 @@ public class QueryBuilder {
     }
 
     public QueryBuilder where(String column, String operator, Object value) {
-        query.append("WHERE ").append(column).append(" ").append(operator).append(" ? ");
+        if (!hasWhereClause) {
+            query.append("WHERE ");
+            hasWhereClause = true;
+        } else {
+            query.append("AND ");
+        }
+        query.append(column).append(" ").append(operator).append(" ? ");
+        parameters.add(value);
+        return this;
+    }
+
+    public QueryBuilder soundex(String column, String searchTerm) {
+        if (query.indexOf("WHERE") == -1) {
+            query.append("WHERE ");
+        } else {
+            query.append("OR ");
+        }
+        query.append("SOUNDEX(").append(column).append(") = SOUNDEX(?) ");
+        parameters.add(searchTerm);
+        return this;
+    }
+
+    public QueryBuilder orWhere(String column, String operator, Object value) {
+        if (!hasWhereClause) {
+            query.append("WHERE ");
+            hasWhereClause = true;
+        } else {
+            query.append("OR ");
+        }
+        query.append(column).append(" ").append(operator).append(" ? ");
         parameters.add(value);
         return this;
     }
@@ -66,12 +97,16 @@ public class QueryBuilder {
         return this;
     }
 
+    public String toString() {
+        return query.toString().trim();
+    }
+
     public PreparedStatement build() throws SQLException {
         PreparedStatement preparedStatement = dbconnection.connection.prepareStatement(query.toString());
-        System.out.println("Final SQL query: " + query.toString());
         for (int i = 0; i < parameters.size(); i++) {
             preparedStatement.setObject(i + 1, parameters.get(i));
         }
         return preparedStatement;
     }
+
 }

@@ -4,17 +4,25 @@
  */
 package LoginForm;
 
+import Utils.PasswordUtils;
+import javax.swing.JOptionPane;
+import raven.toast.Notifications;
+
 /**
  *
  * @author HP
  */
 public class forgotpassword extends javax.swing.JFrame {
 
+    PasswordUtils verifyPassword = new PasswordUtils();
+
     /**
      * Creates new form forgotpassword
      */
     public forgotpassword() {
         initComponents();
+        Notifications.getInstance().setJFrame(this);
+
     }
 
     /**
@@ -31,16 +39,15 @@ public class forgotpassword extends javax.swing.JFrame {
         txtusername1 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtusername2 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtusername3 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        txtusername4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        resetpanel1 = new javax.swing.JPanel();
+        lbltitle2 = new javax.swing.JLabel();
+        resetpanel2 = new javax.swing.JPanel();
+        lblreset = new javax.swing.JLabel();
+        lblsetnewpass = new javax.swing.JLabel();
+        txtsetnewpass = new javax.swing.JTextField();
+        lblconfirmnewpass = new javax.swing.JLabel();
+        txtconfirmnewpass = new javax.swing.JTextField();
+        btnreset = new javax.swing.JButton();
 
         jLabel10.setFont(new java.awt.Font("Ravie", 3, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 0));
@@ -75,117 +82,115 @@ public class forgotpassword extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg3.jpg"))); // NOI18N
+        resetpanel1.setBackground(new java.awt.Color(104, 104, 103));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, Short.MAX_VALUE)
+        lbltitle2.setFont(new java.awt.Font("Algerian", 3, 48)); // NOI18N
+        lbltitle2.setForeground(new java.awt.Color(22, 42, 44));
+        lbltitle2.setText("TIKOPAP");
+
+        javax.swing.GroupLayout resetpanel1Layout = new javax.swing.GroupLayout(resetpanel1);
+        resetpanel1.setLayout(resetpanel1Layout);
+        resetpanel1Layout.setHorizontalGroup(
+            resetpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resetpanel1Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(lbltitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+        resetpanel1Layout.setVerticalGroup(
+            resetpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(resetpanel1Layout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addComponent(lbltitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 520));
+        getContentPane().add(resetpanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 480));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        resetpanel2.setBackground(new java.awt.Color(244, 239, 230));
 
-        jLabel11.setFont(new java.awt.Font("Ravie", 3, 36)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(204, 204, 0));
-        jLabel11.setText("TIKOPAP");
+        lblreset.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
+        lblreset.setForeground(new java.awt.Color(104, 104, 103));
+        lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblreset.setText("PASSWORD RESET");
 
-        jLabel4.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("PASSWORD RESET");
+        lblsetnewpass.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblsetnewpass.setForeground(new java.awt.Color(104, 104, 103));
+        lblsetnewpass.setText("Enter New Password");
 
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Enter New Password");
-
-        txtusername3.setBackground(new java.awt.Color(0, 0, 0));
-        txtusername3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtusername3.setForeground(new java.awt.Color(255, 255, 255));
-        txtusername3.addActionListener(new java.awt.event.ActionListener() {
+        txtsetnewpass.setBackground(new java.awt.Color(244, 239, 230));
+        txtsetnewpass.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtsetnewpass.setForeground(new java.awt.Color(255, 255, 255));
+        txtsetnewpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtusername3ActionPerformed(evt);
+                txtsetnewpassActionPerformed(evt);
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Confirm New Password");
+        lblconfirmnewpass.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblconfirmnewpass.setForeground(new java.awt.Color(104, 104, 103));
+        lblconfirmnewpass.setText("Confirm New Password");
 
-        txtusername4.setBackground(new java.awt.Color(0, 0, 0));
-        txtusername4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtusername4.setForeground(new java.awt.Color(255, 255, 255));
-        txtusername4.addActionListener(new java.awt.event.ActionListener() {
+        txtconfirmnewpass.setBackground(new java.awt.Color(244, 239, 230));
+        txtconfirmnewpass.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtconfirmnewpass.setForeground(new java.awt.Color(255, 255, 255));
+        txtconfirmnewpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtusername4ActionPerformed(evt);
+                txtconfirmnewpassActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 0));
-        jButton1.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("RESET");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnreset.setBackground(new java.awt.Color(214, 224, 226));
+        btnreset.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
+        btnreset.setForeground(new java.awt.Color(104, 104, 103));
+        btnreset.setText("RESET");
+        btnreset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnresetActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(158, 158, 158))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtusername3, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtusername4, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout resetpanel2Layout = new javax.swing.GroupLayout(resetpanel2);
+        resetpanel2.setLayout(resetpanel2Layout);
+        resetpanel2Layout.setHorizontalGroup(
+            resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(resetpanel2Layout.createSequentialGroup()
+                .addGroup(resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(resetpanel2Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblreset, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(resetpanel2Layout.createSequentialGroup()
+                                .addGap(133, 133, 133)
+                                .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(resetpanel2Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+        resetpanel2Layout.setVerticalGroup(
+            resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(resetpanel2Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(lblreset)
+                .addGap(30, 30, 30)
+                .addComponent(lblsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtusername3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtusername4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addComponent(txtsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(lblconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 460, 490));
+        getContentPane().add(resetpanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 460, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -198,18 +203,38 @@ public class forgotpassword extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtusername2ActionPerformed
 
-    private void txtusername3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusername3ActionPerformed
+    private void txtsetnewpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsetnewpassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtusername3ActionPerformed
+    }//GEN-LAST:event_txtsetnewpassActionPerformed
 
-    private void txtusername4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusername4ActionPerformed
+    private void txtconfirmnewpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtconfirmnewpassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtusername4ActionPerformed
+    }//GEN-LAST:event_txtconfirmnewpassActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        login lo = new login();
-         lo.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresetActionPerformed
+
+        String newPassword = txtsetnewpass.getText();
+        String passConfirmation = txtconfirmnewpass.getText();
+
+        System.out.println(newPassword);
+        boolean validPass = verifyPassword.validatePassword(newPassword);
+       
+        if (validPass) {
+            if (newPassword == null ? passConfirmation != null : !newPassword.equals(passConfirmation)) {
+//                JOptionPane.showMessageDialog(null, "Passwords do not match");
+                 Notifications.getInstance().show(Notifications.Type.ERROR,Notifications.Location.TOP_RIGHT, "Passwords do not match");
+                return;
+            }
+            //        login lo = new login();
+//         lo.setVisible(true);
+
+             Notifications.getInstance().show(Notifications.Type.SUCCESS,Notifications.Location.TOP_RIGHT, "Passwords match");
+        }
+
+         Notifications.getInstance().show(Notifications.Type.ERROR,Notifications.Location.TOP_RIGHT, "Passwords you entered is not vaid");
+
+
+    }//GEN-LAST:event_btnresetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,21 +271,21 @@ public class forgotpassword extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnreset;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblconfirmnewpass;
+    private javax.swing.JLabel lblreset;
+    private javax.swing.JLabel lblsetnewpass;
+    private javax.swing.JLabel lbltitle2;
+    private javax.swing.JPanel resetpanel1;
+    private javax.swing.JPanel resetpanel2;
+    private javax.swing.JTextField txtconfirmnewpass;
+    private javax.swing.JTextField txtsetnewpass;
     private javax.swing.JTextField txtusername1;
     private javax.swing.JTextField txtusername2;
-    private javax.swing.JTextField txtusername3;
-    private javax.swing.JTextField txtusername4;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,6 +3,7 @@ package Database;
 import java.sql.Connection;
 import LessJava.*;
 import java.sql.Statement;
+import java.util.Arrays;
 
 public abstract class Migration {
 
@@ -88,6 +89,11 @@ public abstract class Migration {
             sql.append(" NOT NULL");
             return this;
         }
+        
+        public Table nullable() {
+            sql.append( "NULLABLE");
+            return this;
+        }
 
         public Table constrained(String tableName) {
             sql.append(" REFERENCES ").append(tableName).append("(id)");
@@ -102,7 +108,12 @@ public abstract class Migration {
         public Table id() {
             return addColumnDefinition("id INT NOT NULL AUTO_INCREMENT PRIMARY KEY");
         }
-
+        public Table Enum(String columnName, String ...values){
+            String enumValues = String.join(", ", Arrays.stream(values).map(value -> "'" + value + "'").toArray(String[]::new));
+            return addColumnDefinition(columnName + " ENUM(" + enumValues + ")");
+           
+        }
+        
         public Table integer(String columnName) {
             return addColumnDefinition(columnName + " INT");
         }
@@ -148,7 +159,7 @@ public abstract class Migration {
         }
 
         public Table timestamp(String columnName) {
-            return addColumnDefinition(columnName + " TIMESTAMP");
+            return addColumnDefinition(columnName + " DATETIME");
         }
 
         public Table timestamps() {

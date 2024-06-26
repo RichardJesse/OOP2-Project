@@ -4,7 +4,11 @@ CreateEventOrganizerTable
 CreateEventTable
 CreateTicketsTable
 CreateTicketLevelTable
+<<<<<<< HEAD
 CreateAnisaTable
 AddAvailableTicketsToTicketLevelTable
 AddLocationToEventTable
 CreateUsersTable
+=======
+
+>>>>>>> a41d3e15533d77073fb4e68562c0b721fb4b2987
