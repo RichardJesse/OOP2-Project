@@ -289,8 +289,7 @@ public class login extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel2MouseClicked
 
-<<<<<<< HEAD
-=======
+
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
@@ -349,7 +348,7 @@ public class login extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
->>>>>>> 57d4e6bf2cba74a6262e73d32b8109714569180f
+
     /**
      * @param args the command line arguments
      */
