@@ -47,5 +47,31 @@ public class UserAuthenticator {
         return false;
 
     }
+    
+    public boolean CheckPasswordAndName(String email, String password) {
+        try {
+            PreparedStatement statement = qb.select("password").from("event_organizer").where("email", "=", email).build();
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String passwordResult = resultSet.getString("password");
+                boolean passState = passwordHasher.verifyPassword(password, passwordResult);
+                if(passState){
+                    return true;
+                }
+                
+                return false;
+                
+            } else {
+               return false;
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+
+    }
 
 }

@@ -9,13 +9,22 @@ package Models;
  * @author user
  */
 public class EventOrganizerModel {
-
+    
     private String name;
     private String email;
     private String password;
     private String phoneNumber;
+    private int orgId;
 
-    public EventOrganizerModel(String name, String email, String password, String phoneNumber) {
+    public EventOrganizerModel(int orgId ,String name, String email, String password, String phoneNumber) {
+        this.email = email;
+        this.orgId = orgId;
+        this.name = name;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+
+    }
+   public EventOrganizerModel(String name, String email, String password, String phoneNumber) {
         this.email = email;
         this.name = name;
         this.password = password;
@@ -34,6 +43,14 @@ public class EventOrganizerModel {
 
     public String getName() {
         return name;
+    }
+    
+    public void setId(int orgId){
+        this.orgId = orgId;
+    }
+    
+    public int getId(){
+        return orgId;
     }
 
     public void setName(String name) {
@@ -62,6 +79,7 @@ public class EventOrganizerModel {
     @Override
     public String toString() {
         return "Event_Organizer{"
+                +"organizer_id ='" + orgId + '\''
                 + "name='" + name + '\''
                 + ", email='" + email + '\''
                 + ", phone_number='" + phoneNumber + '\''

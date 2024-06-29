@@ -2,10 +2,9 @@ package Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class QueryBuilder {
 
@@ -27,6 +26,11 @@ public class QueryBuilder {
 
     public QueryBuilder from(String table) {
         query.append("FROM ").append(table).append(" ");
+        return this;
+    }
+
+    public QueryBuilder join(String table, String onClause) {
+        query.append("JOIN ").append(table).append(" ON ").append(onClause).append(" ");
         return this;
     }
 
@@ -109,4 +113,36 @@ public class QueryBuilder {
         return preparedStatement;
     }
 
+    // Abstract method to fetch related data
+    public List<Map<String, Object>> fetchRelatedData(String mainTable, String[] mainTableColumns, String joinTable, String joinCondition, String[] joinTableColumns, String whereColumn, Object whereValue) {
+        List<Map<String, Object>> results = new ArrayList<>();
+        QueryBuilder qb = new QueryBuilder();
+
+        // Build the query
+        qb.select(String.join(", ", mainTableColumns) + ", " + String.join(", ", joinTableColumns))
+          .from(mainTable)
+          .join(joinTable, joinCondition)
+          .where(whereColumn, "=", whereValue);
+
+        // Print the query
+        System.out.println("Executing Query: " + qb.toString());
+
+        try {
+            ResultSet rs = qb.build().executeQuery();
+            while (rs.next()) {
+                Map<String, Object> row = new HashMap<>();
+                for (String column : mainTableColumns) {
+                    row.put(column, rs.getObject(column));
+                }
+                for (String column : joinTableColumns) {
+                    row.put(column, rs.getObject(column));
+                }
+                results.add(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return results;
+    }
 }

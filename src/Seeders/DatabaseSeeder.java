@@ -43,6 +43,8 @@ public class DatabaseSeeder {
         databaseSeeder.addSeeder(UserSeeder.class);
         databaseSeeder.addSeeder(EventOrganizerSeeder.class);
         databaseSeeder.addSeeder(EventSeeder.class);
+        databaseSeeder.addSeeder(TicketLevelSeeder.class);
+        databaseSeeder.addSeeder(TicketSeeder.class);
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter command (seed:all or seed:file <SeederName>): ");

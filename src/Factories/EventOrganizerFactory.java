@@ -13,30 +13,25 @@ import Database.Faker;
  * @author user
  */
 public class EventOrganizerFactory extends Factory<EventOrganizerModel> {
-    
-     @Override
+
+    @Override
     protected EventOrganizerModel generateModel() {
-        return new EventOrganizerModel(Faker.randomName(),Faker.randomEmail(), Faker.securePassword(), Faker.phoneNumber());
-        
+        return new EventOrganizerModel(Faker.randomName(), Faker.randomEmail(), Faker.securePassword(), Faker.phoneNumber());
     }
+
     @Override
     protected String getTableName() {
-       return "event_organizer";
+        return "event_organizer";
     }
-    
-   
 
     @Override
     protected String[] getColumns() {
-       return new String[]{"name", "email", "password", "primary_phone_number"};
+        return new String[]{"name", "email", "password", "primary_phone_number"};
     }
 
-    
-    
-     @Override
+    @Override
     protected Object[] extractValues(EventOrganizerModel eventOrg) {
         return new Object[]{eventOrg.getName(), eventOrg.getEmail(), eventOrg.getPassword(), eventOrg.getPhoneNumber()};
     }
 
-    
 }

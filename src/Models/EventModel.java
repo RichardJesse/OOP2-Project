@@ -58,6 +58,7 @@ public class EventModel {
     @Override
     public String toString() {
         return "Event{"
+                +"event_id= '" + eventId + '\''
                 + "eventName='" + eventName + '\''
                 + ", genre='" + genre + '\''
                 + ", eventDescription='" + eventDescription + '\''

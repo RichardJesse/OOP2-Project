@@ -5,6 +5,7 @@
 package loginForm;
 
 import Service.EventService;
+import Service.TicketService;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import raven.toast.Notifications;
 
@@ -86,6 +87,7 @@ public class eventPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         String SearchTerm = searchField.getText();
         EventService es = new EventService();
+        TicketService ts = new TicketService();
 
         if (es.searchEvents(SearchTerm).isEmpty()) {
 
@@ -94,7 +96,7 @@ public class eventPage extends javax.swing.JFrame {
         }
         
         System.out.println(es.searchEvents(SearchTerm));
-       
+       System.out.print(ts.getEventInfoForTicket(1).get(0).get(tickets));
 
 
     }//GEN-LAST:event_searchButtonActionPerformed
