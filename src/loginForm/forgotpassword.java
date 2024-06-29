@@ -5,6 +5,7 @@
 package loginForm;
 
 import Utils.PasswordUtils;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JOptionPane;
 import raven.toast.Notifications;
 
@@ -21,6 +22,7 @@ public class forgotpassword extends javax.swing.JFrame {
      */
     public forgotpassword() {
         initComponents();
+         FlatIntelliJLaf.setup();
         Notifications.getInstance().setJFrame(this);
 
     }
