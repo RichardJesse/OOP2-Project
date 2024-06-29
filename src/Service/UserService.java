@@ -38,8 +38,9 @@ public class UserService {
                 String userEmail = resultSet.getString("email");
                 String firstName = resultSet.getString("first_name");
 //                String lastName = resultSet.getString("last_name");
+                String password = null;
 
-                return new UserModel(display_name, userEmail, firstName);
+                return new UserModel(display_name, userEmail, firstName, password);
             }
         } catch (SQLException e) {
             e.printStackTrace();

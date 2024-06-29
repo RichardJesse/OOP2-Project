@@ -94,6 +94,7 @@ public class eventPage extends javax.swing.JFrame {
         }
         
         System.out.println(es.searchEvents(SearchTerm));
+       
 
 
     }//GEN-LAST:event_searchButtonActionPerformed

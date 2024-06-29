@@ -13,6 +13,8 @@ public class EventModel {
     private String eventName;
     private String genre;
     private String eventDescription;
+    private String availableTickets;
+    private int eventId;
 
     
     public EventModel(String eventName, String genre, String eventDescription) {
@@ -21,6 +23,24 @@ public class EventModel {
         this.eventDescription = eventDescription;
     }
 
+    public EventModel(String eventName, String genre, String eventDescription, String availableTickets) {
+        this.eventName = eventName;
+        this.genre = genre;
+        this.eventDescription = eventDescription;
+        this.availableTickets = availableTickets;
+    }
+    
+    public String getAvailableTickets(){
+        return availableTickets;
+    }
+
+    public int getId(){
+        return eventId;
+    }
+    
+    public void setId(int eventId){
+        this.eventId = eventId;
+    }
     
     public String getEventName() {
         return eventName;
@@ -41,6 +61,7 @@ public class EventModel {
                 + "eventName='" + eventName + '\''
                 + ", genre='" + genre + '\''
                 + ", eventDescription='" + eventDescription + '\''
+                + ", availableTickets='" + availableTickets + '\''
                 + '}';
     }
 }

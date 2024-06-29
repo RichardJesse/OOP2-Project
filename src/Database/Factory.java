@@ -32,12 +32,7 @@ public abstract class Factory<T> {
         QueryBuilder query = new QueryBuilder();
         query.insert(getTableName(), getColumns());
         query.values(extractValues(model));
-        try {
-            System.out.print(query.build());
-        } catch (SQLException ex) {
-            Logger.getLogger(Factory.class.getName()).log(Level.SEVERE, null, ex);
-        }
-      
+       
         try {
             query.build().execute();
             
