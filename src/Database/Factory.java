@@ -6,6 +6,8 @@ package Database;
 
 import Database.QueryBuilder;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,7 +33,14 @@ public abstract class Factory<T> {
         query.insert(getTableName(), getColumns());
         query.values(extractValues(model));
         try {
+            System.out.print(query.build());
+        } catch (SQLException ex) {
+            Logger.getLogger(Factory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+        try {
             query.build().execute();
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }

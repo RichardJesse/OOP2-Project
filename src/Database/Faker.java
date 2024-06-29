@@ -7,10 +7,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Faker {
+
     private static final String SPECIAL_CHARACTERS = "!@#$%^&*()-_=+[{]};:',<.>/?";
     private static final Random RANDOM = new SecureRandom();
     private static final Logger LOGGER = Logger.getLogger(Faker.class.getName());
-    private static final PasswordUtils hash =  new PasswordUtils();
+    private static final PasswordUtils hash = new PasswordUtils();
 
     public static String randomName() {
         return generateRandomString(5, 10); // Random name length between 5 to 10 characters
@@ -39,8 +40,21 @@ public class Faker {
         } catch (Exception ex) {
             Logger.getLogger(Faker.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return null;
+    }
+
+    public static String phoneNumber() {
+        // Define area codes for US phone numbers (you can modify this list)
+        String[] areaCodes = {"212", "310", "415", "510", "617", "708", "818", "917"};
+
+        // Generate random phone number parts
+        String areaCode = areaCodes[RANDOM.nextInt(areaCodes.length)];
+        String exchange = String.format("%03d", RANDOM.nextInt(800) + 100); // Ensure 3 digits between 100-999
+        String subscriber = String.format("%04d", RANDOM.nextInt(10000)); // Ensure 4 digits between 0-9999
+
+        // Return formatted phone number
+        return String.format("(%s) %s-%s", areaCode, exchange, subscriber);
     }
 
     private static String generateRandomString(int minLength, int maxLength) {

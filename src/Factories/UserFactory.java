@@ -7,7 +7,6 @@ import Database.Faker;
 public class UserFactory extends Factory<UserModel> {
     @Override
     protected UserModel generateModel() {
-        System.out.println(Faker.securePassword());
         return new UserModel(Faker.randomName(), Faker.randomEmail(), Faker.randomName(), Faker.securePassword());
     }
 
