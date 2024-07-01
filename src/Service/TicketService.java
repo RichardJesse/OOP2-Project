@@ -17,11 +17,11 @@ import java.util.Map;
  * @author user
  */
 public class TicketService {
-   public List<TicketLevelModel> getTicketLevelInfo(int eventId){
-       List<TicketLevelModel> ticketLevels = new ArrayList<>();
-       
-       
-       QueryBuilder qb = new QueryBuilder();
+
+    public List<TicketLevelModel> getTicketLevelInfo(int eventId) {
+        List<TicketLevelModel> ticketLevels = new ArrayList<>();
+
+        QueryBuilder qb = new QueryBuilder();
         qb.select("*").from("ticket_level").where("event_id", "=", eventId);
         try {
             ResultSet rs = qb.build().executeQuery();
@@ -37,12 +37,12 @@ public class TicketService {
             e.printStackTrace();
         }
         return ticketLevels;
-       
-   }
-   
-   private QueryBuilder queryBuilder = new QueryBuilder();
 
-     public List<Map<String, Object>> getEventInfoForTicket(int ticketId) {
+    }
+
+    private QueryBuilder queryBuilder = new QueryBuilder();
+
+    public List<Map<String, Object>> getEventInfoForTicket(int ticketId) {
         String mainTable = "tickets";
         String[] mainTableColumns = {"tickets.id", "tickets.level_id"};
         String joinTable = "ticket_level";
@@ -50,7 +50,31 @@ public class TicketService {
         String whereColumn = "tickets.id";
         String joinCondition = "tickets.level_id = ticket_level.id";  // Correct join condition
 
-        return queryBuilder.fetchRelatedData(mainTable, mainTableColumns, joinTable, joinCondition, joinTableColumns, whereColumn, ticketId);
+        return queryBuilder.fetchRelatedData(mainTable, mainTableColumns, joinTable, joinCondition, joinTableColumns, whereColumn, ticketId);  
     }
-    
+
+    /**
+     * This function takes a list of maps as a parameter and prints all the keys
+     * and values from each map in the list.
+     *
+     * @param list a list of maps containing keys and values
+     * @return 
+     */
+    public List<Map<String, Object>> printMaps(List<Map<String, Object>> list) {
+        // Iterate over the list
+        for (Map<String, Object> map : list) {
+            // Iterate over the entries of each map
+            for (Map.Entry<String, Object> entry : map.entrySet()) {
+                // Access the key and value
+                String key = entry.getKey();
+                Object value = entry.getValue();
+
+                // Print the key and value with appropriate formatting
+                System.out.println("Key: " + key + ", Value: " + value);\
+            }
+        }
+        
+        return null;
+    }
+
 }

@@ -113,18 +113,18 @@ public class QueryBuilder {
         return preparedStatement;
     }
 
-    // Abstract method to fetch related data
+    
     public List<Map<String, Object>> fetchRelatedData(String mainTable, String[] mainTableColumns, String joinTable, String joinCondition, String[] joinTableColumns, String whereColumn, Object whereValue) {
         List<Map<String, Object>> results = new ArrayList<>();
         QueryBuilder qb = new QueryBuilder();
 
-        // Build the query
+        
         qb.select(String.join(", ", mainTableColumns) + ", " + String.join(", ", joinTableColumns))
           .from(mainTable)
           .join(joinTable, joinCondition)
           .where(whereColumn, "=", whereValue);
 
-        // Print the query
+       
         System.out.println("Executing Query: " + qb.toString());
 
         try {
