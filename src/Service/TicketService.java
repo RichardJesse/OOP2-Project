@@ -70,7 +70,7 @@ public class TicketService {
                 Object value = entry.getValue();
 
                 // Print the key and value with appropriate formatting
-                System.out.println("Key: " + key + ", Value: " + value);\
+                System.out.println("Key: " + key + ", Value: " + value);
             }
         }
         
