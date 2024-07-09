@@ -4,41 +4,21 @@
  */
 package loginForm;
 
-import loginForm.forgotpassword;
-import Models.UserModel;
-import loginForm.signup;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.*;
-import Service.UserService;
 import javax.swing.JOptionPane;
-import Utils.PasswordUtils;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import Database.DatabaseOperations;
-import Database.QueryBuilder;
-import LessJava.*;
 
 /**
  *
  * @author HP
  */
-public class login extends javax.swing.JFrame {
-
-    UserAuthenticator userAuthenticator = new UserAuthenticator();
+public class logineo extends javax.swing.JFrame {
 
     /**
-     * Creates new form login
+     * Creates new form logineo
      */
-    public login() {
-
+    public logineo() {
         initComponents();
     }
 
-    login(String slide_1) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,37 +28,28 @@ public class login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         signupanel1 = new javax.swing.JPanel();
         lgnstmt1 = new javax.swing.JLabel();
         lgnstmt2 = new javax.swing.JLabel();
         lgnstmt3 = new javax.swing.JLabel();
         lgnstmt4 = new javax.swing.JLabel();
-        signupaccess = new javax.swing.JButton();
+        signupaccesseo = new javax.swing.JButton();
         lbltitle3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         lblogin = new javax.swing.JLabel();
         lblenteruser = new javax.swing.JLabel();
         lblenterpass = new javax.swing.JLabel();
-        btnlogin = new javax.swing.JButton();
+        btnlogineo = new javax.swing.JButton();
         rembmrpass = new javax.swing.JCheckBox();
         txtusername = new javax.swing.JTextField();
         txtpassword = new javax.swing.JPasswordField();
-        forgotpassaccess = new javax.swing.JButton();
+        forgotpassaccesseo = new javax.swing.JButton();
         disable = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         show = new javax.swing.JLabel();
 
-        jTextField1.setText("jTextField1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
-
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel4.setBackground(new java.awt.Color(104, 104, 103));
 
@@ -105,13 +76,18 @@ public class login extends javax.swing.JFrame {
         lgnstmt4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lgnstmt4.setText("of our platform");
 
-        signupaccess.setBackground(new java.awt.Color(244, 239, 230));
-        signupaccess.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
-        signupaccess.setForeground(new java.awt.Color(22, 42, 44));
-        signupaccess.setText("SIGN UP");
-        signupaccess.addMouseListener(new java.awt.event.MouseAdapter() {
+        signupaccesseo.setBackground(new java.awt.Color(244, 239, 230));
+        signupaccesseo.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
+        signupaccesseo.setForeground(new java.awt.Color(22, 42, 44));
+        signupaccesseo.setText("SIGN UP");
+        signupaccesseo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signupaccessMouseClicked(evt);
+                signupaccesseoMouseClicked(evt);
+            }
+        });
+        signupaccesseo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupaccesseoActionPerformed(evt);
             }
         });
 
@@ -134,7 +110,7 @@ public class login extends javax.swing.JFrame {
                                 .addComponent(lgnstmt4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(signupanel1Layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(signupaccess, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(signupaccesseo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
         );
         signupanel1Layout.setVerticalGroup(
@@ -149,8 +125,8 @@ public class login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lgnstmt4)
                 .addGap(42, 42, 42)
-                .addComponent(signupaccess)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addComponent(signupaccesseo)
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         lbltitle3.setFont(new java.awt.Font("Algerian", 3, 48)); // NOI18N
@@ -174,29 +150,17 @@ public class login extends javax.swing.JFrame {
                 .addComponent(lbltitle3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(signupanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(244, 239, 230));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(94, 108, 91));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("X");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 6, 24, -1));
-
         lblogin.setFont(new java.awt.Font("Algerian", 1, 24)); // NOI18N
         lblogin.setForeground(new java.awt.Color(94, 108, 91));
         lblogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblogin.setText("Login");
-        jPanel2.add(lblogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 320, -1));
+        jPanel2.add(lblogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 320, -1));
 
         lblenteruser.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblenteruser.setForeground(new java.awt.Color(22, 42, 44));
@@ -208,17 +172,17 @@ public class login extends javax.swing.JFrame {
         lblenterpass.setText("Password");
         jPanel2.add(lblenterpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 77, 26));
 
-        btnlogin.setBackground(new java.awt.Color(214, 224, 226));
-        btnlogin.setFont(new java.awt.Font("Algerian", 3, 18)); // NOI18N
-        btnlogin.setForeground(new java.awt.Color(94, 108, 91));
-        btnlogin.setText("LOGIN");
-        btnlogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+        btnlogineo.setBackground(new java.awt.Color(214, 224, 226));
+        btnlogineo.setFont(new java.awt.Font("Algerian", 3, 18)); // NOI18N
+        btnlogineo.setForeground(new java.awt.Color(94, 108, 91));
+        btnlogineo.setText("LOGIN");
+        btnlogineo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnlogineo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnloginActionPerformed(evt);
+                btnlogineoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 199, 45));
+        jPanel2.add(btnlogineo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 199, 45));
 
         rembmrpass.setBackground(new java.awt.Color(244, 239, 230));
         rembmrpass.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
@@ -237,17 +201,22 @@ public class login extends javax.swing.JFrame {
         txtpassword.setForeground(new java.awt.Color(255, 255, 255));
         jPanel2.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 265, 34));
 
-        forgotpassaccess.setBackground(new java.awt.Color(244, 239, 230));
-        forgotpassaccess.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
-        forgotpassaccess.setForeground(new java.awt.Color(94, 108, 91));
-        forgotpassaccess.setText("Forgot Password?");
-        forgotpassaccess.setBorder(null);
-        forgotpassaccess.addMouseListener(new java.awt.event.MouseAdapter() {
+        forgotpassaccesseo.setBackground(new java.awt.Color(244, 239, 230));
+        forgotpassaccesseo.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
+        forgotpassaccesseo.setForeground(new java.awt.Color(94, 108, 91));
+        forgotpassaccesseo.setText("Forgot Password?");
+        forgotpassaccesseo.setBorder(null);
+        forgotpassaccesseo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                forgotpassaccessMouseClicked(evt);
+                forgotpassaccesseoMouseClicked(evt);
             }
         });
-        jPanel2.add(forgotpassaccess, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 110, 30));
+        forgotpassaccesseo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forgotpassaccesseoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(forgotpassaccesseo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 110, 30));
 
         disable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-invisible-20 (1).png"))); // NOI18N
         jPanel2.add(disable, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 30, 20));
@@ -258,110 +227,49 @@ public class login extends javax.swing.JFrame {
         show.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-eye-20 (2).png"))); // NOI18N
         jPanel2.add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 30, 20));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel3);
-
-        setSize(new java.awt.Dimension(774, 468));
-        setLocationRelativeTo(null);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-   JOptionPane.showInputDialog(null, "You are successfuly logged in");
-                                         
-    }//GEN-LAST:event_btnloginActionPerformed
-
-    private void signupaccessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupaccessMouseClicked
+    private void signupaccesseoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupaccesseoMouseClicked
         signup si = new signup();
         si.setVisible(true);
-    }//GEN-LAST:event_signupaccessMouseClicked
+    }//GEN-LAST:event_signupaccesseoMouseClicked
 
-    private void forgotpassaccessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpassaccessMouseClicked
-      forgotpassword fo = new forgotpassword();
-      fo.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_forgotpassaccessMouseClicked
+    private void btnlogineoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogineoActionPerformed
+        JOptionPane.showInputDialog(null, "You are successfuly logged in");
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_btnlogineoActionPerformed
 
-
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
-    private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtusernameActionPerformed
-
-    private void disableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableMouseClicked
-        txtpassword.setEchoChar((char) 0);
-        disable.setVisible(false);
-        disable.setEnabled(false);
-        show.setEnabled(true);
-        show.setEnabled(true);
-    }//GEN-LAST:event_disableMouseClicked
-
-    private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
-        txtpassword.setEchoChar((char) 0);
-        disable.setVisible(true);
-        disable.setEnabled(true);
-        show.setEnabled(false);
-        show.setEnabled(false);
-    }//GEN-LAST:event_showMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        String password = txtpassword.getText();
-        String username = txtusername.getText();
-        UserService userService = new UserService();
-         userService.setCurrentUserByEmail("jesee@gmail.com");
-         UserModel currentUser = userService.getCurrentUser();
-        System.out.println("Current User: " + currentUser.getEmail());
-
-        // Remove the current user from the session
-        userService.removeCurrentUser();
-        UserModel removedUser = userService.getCurrentUser();
-        System.out.println("User after removal: " + removedUser);
-        boolean isUserValid = userAuthenticator.CheckPasswordAndUserName(username, password);
-
-        if (isUserValid) {
-            JOptionPane.showMessageDialog(null, "You are successfully logged in");
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid username or password");
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        signup si = new signup();
-
-        si.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void forgotpassaccesseoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpassaccesseoMouseClicked
         forgotpassword fo = new forgotpassword();
-        fo.setVisible(true);
+        fo.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_forgotpassaccesseoMouseClicked
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void signupaccesseoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupaccesseoActionPerformed
+        signupeo se = new signupeo();
 
+        se.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_signupaccesseoActionPerformed
+
+    private void forgotpassaccesseoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotpassaccesseoActionPerformed
+        forgotpassword fo = new forgotpassword();
+        fo.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_forgotpassaccesseoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,34 +288,31 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logineo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logineo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logineo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(logineo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new logineo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnlogin;
+    private javax.swing.JButton btnlogineo;
     private javax.swing.JLabel disable;
-    private javax.swing.JButton forgotpassaccess;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton forgotpassaccesseo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblenterpass;
     private javax.swing.JLabel lblenteruser;
     private javax.swing.JLabel lblogin;
@@ -418,7 +323,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel lgnstmt4;
     private javax.swing.JCheckBox rembmrpass;
     private javax.swing.JLabel show;
-    private javax.swing.JButton signupaccess;
+    private javax.swing.JButton signupaccesseo;
     private javax.swing.JPanel signupanel1;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
