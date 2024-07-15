@@ -14,38 +14,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TicketAppStartPage extends JFrame {
-    private final JLabel lblAppName = null;
     private final JPanel navPanel;
     private final JButton btnUserFunction;
     private final JButton btnEventOrganizer;
     private final JTextField txtSearch;
+    private final JButton btnSearch;
     private final JButton btnLogout;
 
-    
     public TicketAppStartPage() {
         setTitle("Tikopap - Start Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
 
-
         // Application name label as background
         JLabel backgroundLabel = new JLabel("<html><center>Tikopap<br><br><br>Welcome to Tikopap!<br>Your go-to platform for all your event needs.</center></html>", SwingConstants.CENTER);
         backgroundLabel.setFont(new Font("Algerian", Font.BOLD, 40));
         backgroundLabel.setForeground(Color.decode("#FEFCF6")); // Grey color
-        backgroundLabel.setBackground(Color.decode("#686867")); 
+        backgroundLabel.setBackground(Color.decode("#686867"));
         backgroundLabel.setOpaque(true);
-       
-        
+
         // Navigation panel
         navPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         navPanel.setBackground(Color.decode("#FEFCF6"));
-        setSize(800, 600);
 
         // Buttons and search bar
         btnUserFunction = new JButton("User Function");
         btnEventOrganizer = new JButton("Event Organizer");
         txtSearch = new JTextField(20);
-        JButton btnSearch = new JButton("Search");
+        btnSearch = new JButton("Search");
         btnLogout = new JButton("Logout");
 
         // Add components to navigation panel
@@ -67,7 +63,9 @@ public class TicketAppStartPage extends JFrame {
         btnUserFunction.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Action for user function button
+                // Open User Function Page
+                dispose(); // Dispose current frame
+                new UserFunctionPage();
             }
         });
 

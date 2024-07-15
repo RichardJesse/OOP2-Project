@@ -314,18 +314,18 @@ public class login extends javax.swing.JFrame {
 
     private void disableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableMouseClicked
         txtpassword.setEchoChar((char) 0);
-        disable.setVisible(false);
+        /**disable.setVisible(false);
         disable.setEnabled(false);
         show.setEnabled(true);
-        show.setEnabled(true);
+        show.setEnabled(true);*/
     }//GEN-LAST:event_disableMouseClicked
 
     private void showMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showMouseClicked
-        txtpassword.setEchoChar((char) 0);
+      /** txtpassword.setEchoChar((char) 0);
         disable.setVisible(true);
         disable.setEnabled(true);
         show.setEnabled(false);
-        show.setEnabled(false);
+        show.setEnabled(false); */
     }//GEN-LAST:event_showMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
