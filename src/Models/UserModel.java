@@ -17,13 +17,26 @@ public class UserModel {
     private String email;
     private String firstName;
     private String lastName;
+    private String password;
+    private int userId;
 
-    public UserModel(String display_name, String email, String firstName) {
+    public UserModel(int userId, String display_name, String email, String firstName, String password) {
         this.display_name = display_name;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password = password;
+        this.userId = userId;
     }
+    
+    public UserModel(String display_name, String email, String firstName, String password) {
+        this.display_name = display_name;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+    }
+
 
    
 
@@ -38,6 +51,16 @@ public class UserModel {
 
     public String getEmail() {
         return email;
+    }
+    
+    public void setId(int userId){
+        
+       this.userId =userId;
+        
+    }
+    
+    public int getId(){
+        return userId;
     }
 
     public void setEmail(String email) {
@@ -59,10 +82,19 @@ public class UserModel {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    
+    public void setPassword(String password){
+        this.password = password;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
 
     @Override
     public String toString() {
         return "User{"
+                + "user_id ='" + userId + '\''
                 + "display_name='" + display_name + '\''
                 + ", email='" + email + '\''
                 + ", firstName='" + firstName + '\''

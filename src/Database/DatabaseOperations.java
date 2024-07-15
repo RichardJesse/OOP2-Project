@@ -14,6 +14,8 @@ public class DatabaseOperations {
     public DatabaseOperations() {
         this.queryBuilder = new QueryBuilder();
     }
+    
+    
 
     /**
      *

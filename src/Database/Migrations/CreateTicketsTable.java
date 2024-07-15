@@ -6,7 +6,7 @@ public class CreateTicketsTable  extends Migration {
         String sql = createTable("tickets")
             .id()
             .foreignId("user_id").constrained("users").cascadeOnDelete()
-            .foreignId("event_id").constrained("event").cascadeOnDelete()
+            .foreignId("level_id").constrained("ticket_level").cascadeOnDelete()
             .string("ticket_number").unique().notNull()
             .timestamps()
             .build();

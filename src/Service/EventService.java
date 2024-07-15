@@ -73,11 +73,72 @@ public class EventService {
         return null;
     }
 
-    public UserModel getEvent() {
-        return (UserModel) SessionManager.getInstance().getAttribute(EVENT);
+    public EventModel getEvent() {
+        return (EventModel) SessionManager.getInstance().getAttribute(EVENT);
     }
 
     public void removeEvent() {
         SessionManager.getInstance().removeAttribute(EVENT);
     }
+
+    public List<EventModel> getAllEvents() {
+        List<EventModel> allEvents = new ArrayList<>();
+
+        QueryBuilder queryBuilder = new QueryBuilder();
+
+        try {
+            PreparedStatement statement = queryBuilder
+                    .select("*")
+                    .from("event")
+                    .build();
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String eventName = resultSet.getString("event_name");
+                String genre = resultSet.getString("genre");
+                String eventDescription = resultSet.getString("event_description");
+
+                EventModel event = new EventModel(eventName, genre, eventDescription);
+                allEvents.add(event);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return allEvents;
+    }
+
+    public List<EventModel> getEventOrgEvents(int EventOrgId) {
+        List<EventModel> allEvents = new ArrayList<>();
+
+        QueryBuilder queryBuilder = new QueryBuilder();
+
+        try {
+            PreparedStatement statement = queryBuilder
+                    .select("*")
+                    .from("event")
+                    .where("event_organizer_id", "=", EventOrgId)
+                    .build();
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String eventName = resultSet.getString("event_name");
+                String genre = resultSet.getString("genre");
+                String eventDescription = resultSet.getString("event_description");
+                String availableTickets = resultSet.getString("avaliable_tickets");
+
+                EventModel event = new EventModel(eventName, genre, eventDescription, availableTickets);
+                allEvents.add(event);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return allEvents;
+    }
+    
+    
+
 }
