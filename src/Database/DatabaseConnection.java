@@ -16,7 +16,7 @@ public class DatabaseConnection {
         String username = DatabaseConstants.DatabaseUsername;
         String password = DatabaseConstants.DatabasePassword;
 
-        System.out.println("Connecting to the database...");
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -26,7 +26,7 @@ public class DatabaseConnection {
         try {
           
             this.connection = DriverManager.getConnection(url, username, password);
-            System.out.println("Connected successfully!");
+            
 
             // Check if the database exists and create it if not
             Statement stmt = connection.createStatement();

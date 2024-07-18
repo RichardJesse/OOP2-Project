@@ -9,4 +9,4 @@ AddLocationToEventTable
 CreateUsersTable
 AddAvailableTicketsToTicketLevelTable
 AddLocationToEventTable
-
+CreatePaymentsTable

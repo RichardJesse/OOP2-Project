@@ -6,11 +6,13 @@
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Models/UserModel.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/MigrationTable.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/loginForm/signup.java</file>
-            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/icon/icons8-invisible-20.jpg</file>
+            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/loginForm/eventManagerDashboardFinished.java</file>
+            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/startpage/EventPage2.java</file>
+            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/startpage/PaymentForm.java</file>
+            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/loginForm/signupeo.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Seeders/UserSeeder.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Models/EventModel.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Migrations/AddAvailableTicketsToTicketLevelTable.java</file>
-            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/icon/icons8-user-20.jpg</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/LessJava/InputHelper.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Factories/TicketLevelFactory.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Factory.java</file>
@@ -21,6 +23,7 @@
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Migrations/CreateTicketsTable.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/startpage/TicketAppStartPage.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Seeders/DatabaseSeeder.java</file>
+            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/startpage/EventPageA.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/TestClass.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Seeders/EventOrganizerSeeder.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Migrations/CreateEventOrganizerTable.java</file>
@@ -47,13 +50,13 @@
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Migrations/CreateEventTable.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Mpesa/Mpesa.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/DatabaseConnection.java</file>
+            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/startpage/UserFunctionPage.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Models/EventOrganizerModel.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Mpesa/Main.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Views/SearchItem.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/MigrationFileCreator.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Seeders/TicketLevelSeeder.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Factories/UserFactory.java</file>
-            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/icon/bg3.jpg</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Enums/EventTypes.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/MigrationNameParser.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/loginForm/NewEventDashboard.java</file>
@@ -61,16 +64,14 @@
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Factories/TicketFactory.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/QueryBuilder.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Models/EventInfoModel.java</file>
-            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/icon/icons8-eye-20%20(1).jpg</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/startpage/TicketAppMain.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Models/TicketLevelModel.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Migrations/CreateUsersTable.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/run_migration.bat</file>
+            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/startpage/EventPage1.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Migration.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Mpesa/Constants.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Utils/SessionManager.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/OOP2-Project/src/loginForm/login.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/OOP2-Project/src/loginForm/signup.java</file>
         </group>
     </open-files>
 </project-private>

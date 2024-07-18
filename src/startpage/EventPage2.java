@@ -55,7 +55,14 @@ public class EventPage2 extends JFrame {
 
         // Buy ticket button
         JButton buyTicketButton = new JButton("Buy a Ticket");
-        buyTicketButton.addActionListener(e -> JOptionPane.showMessageDialog(EventPage2.this, "Redirecting to ticket purchase page..."));
+        buyTicketButton.addActionListener(
+                e ->{
+                    JOptionPane.showMessageDialog(EventPage2.this, "Redirecting to ticket purchase page...");
+                    PaymentForm payment = new PaymentForm("1");
+                    payment.setVisible(true);
+                    this.setVisible(false);
+                            }
+          );
         detailsPanel.add(buyTicketButton);
 
         // Close button
