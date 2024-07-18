@@ -100,7 +100,7 @@ public class PaymentForm extends javax.swing.JFrame {
         String phoneNumber = jTextField1.getText();
         Mpesa mpesa = new Mpesa(Constants.APP_KEY, Constants.APP_SECRET);
         try {
-           String res =  mpesa.STKPushSimulation(
+            String res = mpesa.STKPushSimulation(
                     "174379",
                     "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMTcwODI0MTU1MDU1",
                     "20170824155055",
@@ -113,19 +113,56 @@ public class PaymentForm extends javax.swing.JFrame {
                     "http://obscure-bayou-52273.herokuapp.com/api/Mpesa/C2BValidation",
                     "Tiko-pap", "asdasd"
             );
-           
-            String checkoutRequestID = mpesa.extractCheckoutRequestID(res);
-           
-         
-            mpesa.STKPushTransactionStatus("174379","MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMTcwODI0MTU1MDU1","20170824155055",checkoutRequestID);
 
-            try {
-                PreparedStatement statement = qb.insert("payments", "user_id", "amount", "method").values("1", this.Amount, "mpesa").build();
-                statement.execute();
-                Notifications.getInstance().show(Notifications.Type.SUCCESS, "payment initiated successfully");
-            } catch (SQLException ex) {
-                Notifications.getInstance().show(Notifications.Type.ERROR, "An error occured during payment processing");
-                Logger.getLogger(PaymentForm.class.getName()).log(Level.SEVERE, null, ex);
+            String checkoutRequestID = mpesa.extractCheckoutRequestID(res);
+
+            boolean transactionSuccess = false;
+            int attempts = 0;
+            int maxAttempts = 10; // Check up to 10 times
+            int interval = 5000; // 5 seconds interval
+
+            while (attempts < maxAttempts && !transactionSuccess) {
+                String statusResponse = mpesa.STKPushTransactionStatus(
+                        "174379",
+                        "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMTcwODI0MTU1MDU1",
+                        "20170824155055",
+                        checkoutRequestID
+                );
+
+                String resultCode = mpesa.extractResultCode(statusResponse);
+                String errorCode = mpesa.extractErrorCode(statusResponse);
+
+                if (resultCode != null && resultCode.equals("0")) { // Assuming "0" indicates success
+                    transactionSuccess = true;
+                } else if (resultCode != null && (resultCode.equals("1032") || resultCode.equals("2001"))) { 
+                    break;
+                } else if (errorCode != null && errorCode.equals("500.001.1001")) { 
+                    // Continue polling
+                } else if (errorCode != null) {
+                    // Handle other error codes if necessary
+                    break;
+                }
+
+                attempts++;
+                try {
+                    Thread.sleep(interval); // Wait before the next check
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(PaymentForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            if (transactionSuccess) {
+                PreparedStatement statement;
+                try {
+                    statement = qb.insert("payments", "user_id", "amount", "method").values("1", this.Amount, "mpesa").build();
+                    statement.execute();
+                    Notifications.getInstance().show(Notifications.Type.SUCCESS, "Payment successful and recorded.");
+                } catch (SQLException ex) {
+                    Logger.getLogger(PaymentForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } else {
+                Notifications.getInstance().show(Notifications.Type.ERROR, "Payment failed or timed out.");
             }
 
         } catch (IOException ex) {
