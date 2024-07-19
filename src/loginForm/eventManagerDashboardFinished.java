@@ -4,6 +4,10 @@
  */
 package loginForm;
 
+import Models.UserModel;
+import Models.EventOrganizerModel;
+import Service.UserService;
+import Service.EventService;
 import java.awt.Color;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,6 +16,7 @@ import java.io.ObjectOutputStream;
 import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,15 +24,19 @@ import javax.swing.table.DefaultTableModel;
  * @author user
  */
 public class eventManagerDashboardFinished extends javax.swing.JFrame {
-    
+
     //Add a variable to track the selected label
     private JLabel selectedLabel = null;
-    
+    UserService userService = new UserService();
+    EventService eventService = new EventService();
+    EventOrganizerModel currentUser = userService.getCurrentOrganizer();
+
     /**
      * Creates new form eventManagerDashboard
      */
     public eventManagerDashboardFinished() {
         initComponents();
+        setNumbers();
     }
 
     /**
@@ -922,59 +931,75 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setNumbers() {
+        jLabel12.setText("0");
+        jLabel11.setText("0");
+        
+        new Thread(() -> {
+            String availableTickets = eventService.getTotalAvailableTickets(currentUser.getId());
+
+            // Update UI thread-safely using SwingUtilities.invokeLater()
+            SwingUtilities.invokeLater(() -> jLabel10.setText(availableTickets));
+        }).start();
+
+        jLabel6.setText("Welcome" + " " + this.currentUser.getName());
+
+    }
+
+
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
         //Turns color on when hovering over text
         if (selectedLabel != jLabel2) {
-            jLabel2.setBackground(new Color(153,153,153));
+            jLabel2.setBackground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
         //Returns to background color when you leave
         if (selectedLabel != jLabel2) {
-            jLabel2.setBackground(new Color(211,211,211));
+            jLabel2.setBackground(new Color(211, 211, 211));
         }
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
         //Turns color on when hovering over text
         if (selectedLabel != jLabel3) {
-            jLabel3.setBackground(new Color(153,153,153));
+            jLabel3.setBackground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jLabel3MouseEntered
 
     private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
         //Returns to background color when you leave
         if (selectedLabel != jLabel3) {
-            jLabel3.setBackground(new Color(211,211,211));
+            jLabel3.setBackground(new Color(211, 211, 211));
         }
     }//GEN-LAST:event_jLabel3MouseExited
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
         //Turns color on when hovering over text
         if (selectedLabel != jLabel4) {
-            jLabel4.setBackground(new Color(153,153,153));
+            jLabel4.setBackground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jLabel4MouseEntered
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
         //Returns to background color when you leave
         if (selectedLabel != jLabel4) {
-            jLabel4.setBackground(new Color(211,211,211));
+            jLabel4.setBackground(new Color(211, 211, 211));
         }
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
         //Turns color on when hovering over text
         if (selectedLabel != jLabel5) {
-            jLabel5.setBackground(new Color(153,153,153));
+            jLabel5.setBackground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jLabel5MouseEntered
 
     private void jLabel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseExited
         //Returns to background color when you leave
         if (selectedLabel != jLabel5) {
-            jLabel5.setBackground(new Color(211,211,211));
+            jLabel5.setBackground(new Color(211, 211, 211));
         }
     }//GEN-LAST:event_jLabel5MouseExited
 
@@ -1035,16 +1060,16 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
         String date = tfDate2.getText();
         String time = tfTime2.getText();
         String venue = tfVenue2.getText();
-        
+
         if (name.isEmpty() || date.isEmpty() || time.isEmpty() || venue.isEmpty()) {
             JOptionPane.showMessageDialog(this,
-                                    "Please enter all fields",
-                                    "Try again",
-                                    JOptionPane.ERROR_MESSAGE);
+                    "Please enter all fields",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
         } else {
             DefaultTableModel model = (DefaultTableModel) tableEvents.getModel();
             model.addRow(new Object[]{name, date, time, venue});
-            
+
             tfName2.setText("");
             tfDate2.setText("");
             tfTime2.setText("");
@@ -1061,12 +1086,12 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int row = tableEvents.getSelectedRow();
-        
+
         if (row < 0) {
             JOptionPane.showMessageDialog(this,
-                                    "No row is selected! Please select a row",
-                                    "Select row",
-                                    JOptionPane.ERROR_MESSAGE);
+                    "No row is selected! Please select a row",
+                    "Select row",
+                    JOptionPane.ERROR_MESSAGE);
         } else {
             DefaultTableModel model = (DefaultTableModel) tableEvents.getModel();
             model.removeRow(row);
@@ -1089,7 +1114,7 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    
+
         // Store data for tableSales
         DefaultTableModel salesModel = (DefaultTableModel) tableSales.getModel();
         Vector<Vector> salesTableData = salesModel.getDataVector();
@@ -1125,7 +1150,7 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    
+
         // Load data for tableSales
         try {
             FileInputStream salesFile = new FileInputStream("file_sales.bin");
@@ -1147,12 +1172,12 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
 
     private void btnDeletingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletingActionPerformed
         int row = tableSales.getSelectedRow();
-        
+
         if (row < 0) {
             JOptionPane.showMessageDialog(this,
-                                    "No row is selected! Please select a row",
-                                    "Select row",
-                                    JOptionPane.ERROR_MESSAGE);
+                    "No row is selected! Please select a row",
+                    "Select row",
+                    JOptionPane.ERROR_MESSAGE);
         } else {
             DefaultTableModel model = (DefaultTableModel) tableSales.getModel();
             model.removeRow(row);
@@ -1164,16 +1189,16 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
         String sold = tfTicketsSold.getText();
         String available = tfTicketsAvailable.getText();
         String revenue = tfRevenue.getText();
-        
+
         if (event.isEmpty() || sold.isEmpty() || available.isEmpty() || revenue.isEmpty()) {
             JOptionPane.showMessageDialog(this,
-                                    "Please enter all fields",
-                                    "Try again",
-                                    JOptionPane.ERROR_MESSAGE);
+                    "Please enter all fields",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
         } else {
             DefaultTableModel model = (DefaultTableModel) tableSales.getModel();
             model.addRow(new Object[]{event, sold, available, revenue});
-            
+
             tfEventName.setText("");
             tfTicketsSold.setText("");
             tfTicketsAvailable.setText("");
@@ -1187,23 +1212,23 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
         tfTicketsAvailable.setText("");
         tfRevenue.setText("");
     }//GEN-LAST:event_btnClearingActionPerformed
-    
+
     //Helper method to select a label and reset others
     private void selectLabel(JLabel label) {
         selectedLabel = label;
-        jLabel2.setBackground(new Color(211,211,211));
-        jLabel3.setBackground(new Color(211,211,211));
-        jLabel4.setBackground(new Color(211,211,211));
-        jLabel5.setBackground(new Color(211,211,211));
-        label.setBackground(new Color(153,153,153));
-        
+        jLabel2.setBackground(new Color(211, 211, 211));
+        jLabel3.setBackground(new Color(211, 211, 211));
+        jLabel4.setBackground(new Color(211, 211, 211));
+        jLabel5.setBackground(new Color(211, 211, 211));
+        label.setBackground(new Color(153, 153, 153));
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

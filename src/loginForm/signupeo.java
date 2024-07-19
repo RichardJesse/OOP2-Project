@@ -280,6 +280,7 @@ public class signupeo extends javax.swing.JFrame {
                 if (doesUserQualify) {
                     Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Welcome to tiko-pap");
                     logineo le = new logineo();
+                    this.setVisible(false);
                     le.setVisible(true);
                 }
             } catch (SQLException ex) {

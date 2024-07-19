@@ -341,13 +341,13 @@ public class login extends javax.swing.JFrame {
         userService.removeCurrentUser();
         UserModel removedUser = userService.getCurrentUser();
         System.out.println("User after removal: " + removedUser);
-        boolean isUserValid = userAuthenticator.CheckPasswordAndEmail(username, password);
+//        boolean isUserValid = userAuthenticator.CheckPasswordAndEmail(username, password);
 
-        if (isUserValid) {
-            JOptionPane.showMessageDialog(null, "You are successfully logged in");
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid username or password");
-        }
+//        if (isUserValid) {
+//            JOptionPane.showMessageDialog(null, "You are successfully logged in");
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Invalid username or password");
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Models/UserModel.java</file>
+            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/images/event3.jpeg</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/MigrationTable.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/loginForm/signup.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Migrations/CreatePaymentsTable.java</file>
@@ -49,6 +50,7 @@
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Migrations/CreateMigrationsTable.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Service/EventService.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Service/TicketService.java</file>
+            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Migrations/AddPhoneNumberToUsersTable.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/DatabaseConstants.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/Migrations/CreateEventTable.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Mpesa/Mpesa.java</file>
@@ -56,6 +58,7 @@
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/startpage/UserFunctionPage.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Models/EventOrganizerModel.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Mpesa/Main.java</file>
+            <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/images/event2.jpeg</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Views/SearchItem.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Database/MigrationFileCreator.java</file>
             <file>file:/C:/Users/user/OneDrive/Documents/NetBeansProjects/OOP2-Project/src/Seeders/TicketLevelSeeder.java</file>

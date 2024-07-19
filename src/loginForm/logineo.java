@@ -322,7 +322,11 @@ public class logineo extends javax.swing.JFrame {
             }
         }
         
-         Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "This action seems suspicous");
+        if(this.userType == null){
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "This action seems suspicous");    
+        }
+        
+       
         
         
 

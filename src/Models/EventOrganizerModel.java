@@ -35,6 +35,10 @@ public class EventOrganizerModel {
     public String getEmail() {
         return email;
     }
+    
+    public int getId(){
+        return orgId;
+    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -49,10 +53,6 @@ public class EventOrganizerModel {
         this.orgId = orgId;
     }
     
-    public int getId(){
-        return orgId;
-    }
-
     public void setName(String name) {
         this.name = name;
 

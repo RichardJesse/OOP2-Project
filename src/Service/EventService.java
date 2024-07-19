@@ -138,7 +138,29 @@ public class EventService {
 
         return allEvents;
     }
-    
-    
+
+    public String getTotalAvailableTickets(int eventOrgId) {
+        int totalAvailableTickets = 0;
+
+        QueryBuilder queryBuilder = new QueryBuilder();
+
+        try {
+            PreparedStatement statement = queryBuilder
+                    .select("SUM(avaliable_tickets) AS total_tickets")
+                    .from("event")
+                    .where("event_organizer_id", "=", eventOrgId)
+                    .build();
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                totalAvailableTickets = resultSet.getInt("total_tickets");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return String.valueOf(totalAvailableTickets);
+    }
 
 }

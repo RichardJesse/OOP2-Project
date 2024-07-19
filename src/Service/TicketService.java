@@ -50,7 +50,7 @@ public class TicketService {
         String whereColumn = "tickets.id";
         String joinCondition = "tickets.level_id = ticket_level.id";  // Correct join condition
 
-        return queryBuilder.fetchRelatedData(mainTable, mainTableColumns, joinTable, joinCondition, joinTableColumns, whereColumn, ticketId);  
+        return queryBuilder.fetchRelatedData(mainTable, mainTableColumns, joinTable, joinCondition, joinTableColumns, whereColumn, ticketId);
     }
 
     /**
@@ -58,7 +58,7 @@ public class TicketService {
      * and values from each map in the list.
      *
      * @param list a list of maps containing keys and values
-     * @return 
+     * @return
      */
     public List<Map<String, Object>> printMaps(List<Map<String, Object>> list) {
         // Iterate over the list
@@ -73,9 +73,93 @@ public class TicketService {
                 System.out.println("Key: " + key + ", Value: " + value);
             }
         }
-        
+
         return null;
     }
+
+    public int getTotalAvailableTickets(int eventId) {
+        int totalAvailableTickets = 0;
+
+        QueryBuilder queryBuilder = new QueryBuilder();
+
+        try {
+            PreparedStatement statement = queryBuilder
+                    .select("SUM(available_tickets) AS total_tickets")
+                    .from("ticket_level")
+                    .where("event_id", "=", eventId)
+                    .build();
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                totalAvailableTickets = resultSet.getInt("total_tickets");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalAvailableTickets;
+    }
+
+    public int getTotalPrice(int eventId) {
+        int totalPrice = 0;
+
+        QueryBuilder queryBuilder = new QueryBuilder();
+
+        try {
+            PreparedStatement statement = queryBuilder
+                    .select("SUM(price) AS total_price")
+                    .from("ticket_level")
+                    .where("event_id", "=", eventId)
+                    .build();
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                totalPrice = resultSet.getInt("total_tickets");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalPrice;
+    }
+
+    public int getAvailableTickets(int eventOrgId) {
+        int totalAvailableTickets = 0;
+
+        QueryBuilder queryBuilder = new QueryBuilder();
+
+        try {
+            PreparedStatement statement = queryBuilder
+                    .select("SUM(avaliable_tickets) AS total_tickets")
+                    .from("event")
+                    .where("event_organizer_id", "=", eventOrgId)
+                    .build();
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                totalAvailableTickets = resultSet.getInt("total_tickets");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalAvailableTickets;
+    }
     
-    
+    public String getTicketSalesRevenue(int eventOrgId){
+        
+        int ticketLevel = this.getTotalAvailableTickets(eventOrgId);
+        int tickets = this.getAvailableTickets(eventOrgId);
+        
+        int price = this.getTotalPrice(eventOrgId);
+        
+        int calculateRevenue = price * (tickets - ticketLevel);
+        
+        return String.valueOf(calculateRevenue);
+        
+    }
+
 }
