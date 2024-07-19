@@ -30,8 +30,6 @@ public class MigrationRunner {
             e.printStackTrace();
         }
 
-        // Assume MigrationTable is a class that interacts with your database
-        // and can check if a migration has been run and mark a migration as run.
         MigrationTable migrationTable = new MigrationTable();
 
         // Run each migration

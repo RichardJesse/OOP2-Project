@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Database.*;
+import Models.UserModel;
+import Service.UserService;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -22,6 +24,8 @@ import raven.toast.Notifications;
 public class PaymentForm extends javax.swing.JFrame {
 
     private String Amount;
+    UserService userService =  new UserService();
+    UserModel currentUser = userService.getCurrentUser();
 
     /**
      * Creates new form PaymentForm
@@ -118,8 +122,8 @@ public class PaymentForm extends javax.swing.JFrame {
 
             boolean transactionSuccess = false;
             int attempts = 0;
-            int maxAttempts = 10; // Check up to 10 times
-            int interval = 5000; // 5 seconds interval
+            int maxAttempts = 10; 
+            int interval = 5000; 
 
             while (attempts < maxAttempts && !transactionSuccess) {
                 String statusResponse = mpesa.STKPushTransactionStatus(
@@ -132,20 +136,21 @@ public class PaymentForm extends javax.swing.JFrame {
                 String resultCode = mpesa.extractResultCode(statusResponse);
                 String errorCode = mpesa.extractErrorCode(statusResponse);
 
-                if (resultCode != null && resultCode.equals("0")) { // Assuming "0" indicates success
+                if (resultCode != null && resultCode.equals("0")) { 
                     transactionSuccess = true;
                 } else if (resultCode != null && (resultCode.equals("1032") || resultCode.equals("2001"))) { 
                     break;
                 } else if (errorCode != null && errorCode.equals("500.001.1001")) { 
-                    // Continue polling
+                    Notifications.getInstance().show(Notifications.Type.INFO, "Payment is still being processed");
+                    
                 } else if (errorCode != null) {
-                    // Handle other error codes if necessary
+
                     break;
                 }
 
                 attempts++;
                 try {
-                    Thread.sleep(interval); // Wait before the next check
+                    Thread.sleep(interval); 
                 } catch (InterruptedException ex) {
                     Logger.getLogger(PaymentForm.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -154,7 +159,7 @@ public class PaymentForm extends javax.swing.JFrame {
             if (transactionSuccess) {
                 PreparedStatement statement;
                 try {
-                    statement = qb.insert("payments", "user_id", "amount", "method").values("1", this.Amount, "mpesa").build();
+                    statement = qb.insert("payments", "user_id", "amount", "method").values(currentUser.getId(), this.Amount, "mpesa").build();
                     statement.execute();
                     Notifications.getInstance().show(Notifications.Type.SUCCESS, "Payment successful and recorded.");
                 } catch (SQLException ex) {

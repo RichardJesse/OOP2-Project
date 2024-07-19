@@ -4,7 +4,14 @@
  */
 package loginForm;
 
+import LessJava.UserAuthenticator;
+import Models.UserModel;
+import Models.EventOrganizerModel;
+import startpage.UserFunctionPage;
+import Service.UserService;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.JOptionPane;
+import raven.toast.Notifications;
 
 /**
  *
@@ -12,11 +19,23 @@ import javax.swing.JOptionPane;
  */
 public class logineo extends javax.swing.JFrame {
 
+    UserAuthenticator userAuthenticator = new UserAuthenticator();
+    private String userType;
+
     /**
      * Creates new form logineo
      */
     public logineo() {
         initComponents();
+        FlatIntelliJLaf.setup();
+        Notifications.getInstance().setJFrame(this);
+    }
+
+    public logineo(String userType) {
+        initComponents();
+        FlatIntelliJLaf.setup();
+        Notifications.getInstance().setJFrame(this);
+        this.userType = userType;
     }
 
     /**
@@ -246,29 +265,82 @@ public class logineo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signupaccesseoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupaccesseoMouseClicked
-        signup si = new signup();
+        signupeo si = new signupeo(this.userType);
+        this.setVisible(false);
         si.setVisible(true);
     }//GEN-LAST:event_signupaccesseoMouseClicked
 
     private void btnlogineoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlogineoActionPerformed
-        JOptionPane.showInputDialog(null, "You are successfuly logged in");
+        if (this.userType.equals("normalUser")) {
+            String password = txtpassword.getText();
+            String email = txtusername.getText();
+
+            UserService userService = new UserService();
+            userService.setCurrentUserByEmail(email);
+            UserModel currentUser = userService.getCurrentUser();
+            System.out.println("Current User: " + currentUser.getEmail());
+
+            // Remove the current user from the session
+//        userService.removeCurrentUser();
+//        UserModel removedUser = userService.getCurrentUser();
+//        System.out.println("User after removal: " + removedUser);
+            boolean isUserValid = userAuthenticator.CheckPasswordAndEmail(email, password, "users");
+
+            if (isUserValid) {
+                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Welcome");
+                UserFunctionPage userpage = new UserFunctionPage();
+                this.setVisible(false);
+                userpage.setVisible(true);
+
+            } else {
+                Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Invalid email or password");
+            }
+        }
+        if (this.userType.equals("eventOrg")) {
+            String password = txtpassword.getText();
+            String email = txtusername.getText();
+
+            UserService userService = new UserService();
+            userService.setCurrentOrganizerByEmail(email);
+            EventOrganizerModel currentOrganizer = userService.getCurrentOrganizer();
+            System.out.println("Current User: " + currentOrganizer.getEmail());
+
+            // Remove the current user from the session
+//        userService.removeCurrentUser();
+//        UserModel removedUser = userService.getCurrentUser();
+//        System.out.println("User after removal: " + removedUser);
+            boolean isUserValid = userAuthenticator.CheckPasswordAndEmail(email, password, "event_organizer");
+
+            if (isUserValid) {
+                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Welcome");
+                eventManagerDashboardFinished eventOrgPage = new eventManagerDashboardFinished();
+                eventOrgPage.setVisible(true);
+                this.setVisible(false);
+
+            } else {
+                Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Invalid email or password");
+            }
+        }
+        
+         Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "This action seems suspicous");
+        
+        
+
 
     }//GEN-LAST:event_btnlogineoActionPerformed
 
     private void forgotpassaccesseoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpassaccesseoMouseClicked
         forgotpassword fo = new forgotpassword();
-        fo.setVisible(true);        // TODO add your handling code here:
+        this.setVisible(false);
+        fo.setVisible(true);
     }//GEN-LAST:event_forgotpassaccesseoMouseClicked
 
     private void signupaccesseoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupaccesseoActionPerformed
-        signupeo se = new signupeo();
 
-        se.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_signupaccesseoActionPerformed
 
     private void forgotpassaccesseoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotpassaccesseoActionPerformed
-        forgotpassword fo = new forgotpassword();
-        fo.setVisible(true);        // TODO add your handling code here:
+        
     }//GEN-LAST:event_forgotpassaccesseoActionPerformed
 
     /**

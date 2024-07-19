@@ -14,7 +14,7 @@ public class UserFunctionPage extends JFrame {
 
     // Define colors
     private Color lightGray = Color.decode("#bdc3c7");
-
+    
     public UserFunctionPage() {
         setTitle("User Function Page");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Dispose on close to return to start page

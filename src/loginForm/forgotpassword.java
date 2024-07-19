@@ -22,7 +22,7 @@ public class forgotpassword extends javax.swing.JFrame {
      */
     public forgotpassword() {
         initComponents();
-         FlatIntelliJLaf.setup();
+        FlatIntelliJLaf.setup();
         Notifications.getInstance().setJFrame(this);
 
     }
@@ -50,6 +50,8 @@ public class forgotpassword extends javax.swing.JFrame {
         lblconfirmnewpass = new javax.swing.JLabel();
         txtconfirmnewpass = new javax.swing.JTextField();
         btnreset = new javax.swing.JButton();
+        EmailTextField = new javax.swing.JTextField();
+        lblsetnewpass1 = new javax.swing.JLabel();
 
         jLabel10.setFont(new java.awt.Font("Ravie", 3, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 0));
@@ -118,7 +120,7 @@ public class forgotpassword extends javax.swing.JFrame {
 
         lblsetnewpass.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblsetnewpass.setForeground(new java.awt.Color(104, 104, 103));
-        lblsetnewpass.setText("Enter New Password");
+        lblsetnewpass.setText("Email");
 
         txtsetnewpass.setBackground(new java.awt.Color(244, 239, 230));
         txtsetnewpass.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -152,6 +154,19 @@ public class forgotpassword extends javax.swing.JFrame {
             }
         });
 
+        EmailTextField.setBackground(new java.awt.Color(244, 239, 230));
+        EmailTextField.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        EmailTextField.setForeground(new java.awt.Color(255, 255, 255));
+        EmailTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailTextFieldActionPerformed(evt);
+            }
+        });
+
+        lblsetnewpass1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblsetnewpass1.setForeground(new java.awt.Color(104, 104, 103));
+        lblsetnewpass1.setText("Enter New Password");
+
         javax.swing.GroupLayout resetpanel2Layout = new javax.swing.GroupLayout(resetpanel2);
         resetpanel2.setLayout(resetpanel2Layout);
         resetpanel2Layout.setHorizontalGroup(
@@ -171,25 +186,38 @@ public class forgotpassword extends javax.swing.JFrame {
                             .addComponent(lblconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(resetpanel2Layout.createSequentialGroup()
+                    .addGap(63, 63, 63)
+                    .addComponent(lblsetnewpass1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(240, Short.MAX_VALUE)))
         );
         resetpanel2Layout.setVerticalGroup(
             resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(resetpanel2Layout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(lblreset)
-                .addGap(30, 30, 30)
-                .addComponent(lblsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(EmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(txtsetnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtconfirmnewpass, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(btnreset, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addGroup(resetpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(resetpanel2Layout.createSequentialGroup()
+                    .addGap(198, 198, 198)
+                    .addComponent(lblsetnewpass1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(251, Short.MAX_VALUE)))
         );
 
         getContentPane().add(resetpanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 460, 480));
@@ -220,23 +248,29 @@ public class forgotpassword extends javax.swing.JFrame {
 
         System.out.println(newPassword);
         boolean validPass = verifyPassword.validatePassword(newPassword);
-       
+
         if (validPass) {
             if (newPassword == null ? passConfirmation != null : !newPassword.equals(passConfirmation)) {
-//                JOptionPane.showMessageDialog(null, "Passwords do not match");
-                 Notifications.getInstance().show(Notifications.Type.ERROR,Notifications.Location.TOP_RIGHT, "Passwords do not match");
+
+                Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_RIGHT, "Passwords do not match");
                 return;
             }
-            //        login lo = new login();
-//         lo.setVisible(true);
+           
 
-             Notifications.getInstance().show(Notifications.Type.SUCCESS,Notifications.Location.TOP_RIGHT, "Passwords match");
+            Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_RIGHT, "Passwords match");
+            logineo lo = new logineo();
+            this.setVisible(false);
+            lo.setVisible(true);
         }
 
-         Notifications.getInstance().show(Notifications.Type.ERROR,Notifications.Location.TOP_RIGHT, "Passwords you entered is not vaid");
+        Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_RIGHT, "Passwords you entered is not vaid");
 
 
     }//GEN-LAST:event_btnresetActionPerformed
+
+    private void EmailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,6 +309,7 @@ public class forgotpassword extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField EmailTextField;
     private javax.swing.JButton btnreset;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel8;
@@ -282,6 +317,7 @@ public class forgotpassword extends javax.swing.JFrame {
     private javax.swing.JLabel lblconfirmnewpass;
     private javax.swing.JLabel lblreset;
     private javax.swing.JLabel lblsetnewpass;
+    private javax.swing.JLabel lblsetnewpass1;
     private javax.swing.JLabel lbltitle2;
     private javax.swing.JPanel resetpanel1;
     private javax.swing.JPanel resetpanel2;

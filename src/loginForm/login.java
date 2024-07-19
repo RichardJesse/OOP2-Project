@@ -341,7 +341,7 @@ public class login extends javax.swing.JFrame {
         userService.removeCurrentUser();
         UserModel removedUser = userService.getCurrentUser();
         System.out.println("User after removal: " + removedUser);
-        boolean isUserValid = userAuthenticator.CheckPasswordAndUserName(username, password);
+        boolean isUserValid = userAuthenticator.CheckPasswordAndEmail(username, password);
 
         if (isUserValid) {
             JOptionPane.showMessageDialog(null, "You are successfully logged in");

@@ -8,7 +8,7 @@ public class CreateUsersTable extends Migration {
     public void up() {
         String sql = createTable("users")
                 .id()
-                .string("first_name").notNull()
+                .string("name").notNull()
                 .string("middle_name")
                 .string("display_name").unique()
                 .string("password")

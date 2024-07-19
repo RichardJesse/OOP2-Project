@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import loginForm.logineo;
 
 public class TicketAppStartPage extends JFrame {
     private final JPanel navPanel;
@@ -65,7 +66,8 @@ public class TicketAppStartPage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Open User Function Page
                 dispose(); // Dispose current frame
-                new UserFunctionPage();
+                logineo logineo = new logineo("normalUser");
+                logineo.setVisible(true);
             }
         });
 
@@ -73,6 +75,9 @@ public class TicketAppStartPage extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Action for event organizer button
+                dispose(); // Dispose current frame
+                logineo logineo = new logineo("eventOrg");
+                logineo.setVisible(true);
             }
         });
 

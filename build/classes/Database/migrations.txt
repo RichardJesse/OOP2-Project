@@ -10,3 +10,4 @@ CreateUsersTable
 AddAvailableTicketsToTicketLevelTable
 AddLocationToEventTable
 CreatePaymentsTable
+AddPhoneNumberToUsersTable

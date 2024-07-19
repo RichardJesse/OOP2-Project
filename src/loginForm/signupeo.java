@@ -4,7 +4,14 @@
  */
 package loginForm;
 
+import LessJava.UserAuthenticator;
 import javax.swing.JOptionPane;
+import Utils.PasswordUtils;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import raven.toast.Notifications;
 
 /**
  *
@@ -12,11 +19,25 @@ import javax.swing.JOptionPane;
  */
 public class signupeo extends javax.swing.JFrame {
 
+    PasswordUtils passwordUtils = new PasswordUtils();
+    UserAuthenticator userAuthenticator = new UserAuthenticator();
+    private String userType;
+    
+
     /**
      * Creates new form signupeo
      */
     public signupeo() {
         initComponents();
+        FlatIntelliJLaf.setup();
+        Notifications.getInstance().setJFrame(this);
+    }
+    
+     public signupeo(String userType) {
+        initComponents();
+        FlatIntelliJLaf.setup();
+        Notifications.getInstance().setJFrame(this);
+        this.userType = userType;
     }
 
     /**
@@ -32,20 +53,20 @@ public class signupeo extends javax.swing.JFrame {
         lblogin = new javax.swing.JLabel();
         lblenteruser = new javax.swing.JLabel();
         lblenterpass = new javax.swing.JLabel();
-        btnlogin = new javax.swing.JButton();
-        txtusername = new javax.swing.JTextField();
+        signUpBtn = new javax.swing.JButton();
+        txtemail = new javax.swing.JTextField();
         txtpassword = new javax.swing.JPasswordField();
         lblenteruser1 = new javax.swing.JLabel();
-        txtusername1 = new javax.swing.JTextField();
+        txtusername = new javax.swing.JTextField();
         lblenterpass1 = new javax.swing.JLabel();
-        txtpassword1 = new javax.swing.JPasswordField();
+        txtphoneNumber = new javax.swing.JPasswordField();
         jPanel4 = new javax.swing.JPanel();
         signupanel1 = new javax.swing.JPanel();
         lgnstmt1 = new javax.swing.JLabel();
         lgnstmt2 = new javax.swing.JLabel();
         lgnstmt3 = new javax.swing.JLabel();
         lgnstmt4 = new javax.swing.JLabel();
-        signupaccess = new javax.swing.JButton();
+        loginAccess = new javax.swing.JButton();
         lbltitle3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,22 +90,22 @@ public class signupeo extends javax.swing.JFrame {
         lblenterpass.setText("Enter Password");
         jPanel2.add(lblenterpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 110, 26));
 
-        btnlogin.setBackground(new java.awt.Color(214, 224, 226));
-        btnlogin.setFont(new java.awt.Font("Algerian", 3, 18)); // NOI18N
-        btnlogin.setForeground(new java.awt.Color(94, 108, 91));
-        btnlogin.setText("SIGNUP");
-        btnlogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+        signUpBtn.setBackground(new java.awt.Color(214, 224, 226));
+        signUpBtn.setFont(new java.awt.Font("Algerian", 3, 18)); // NOI18N
+        signUpBtn.setForeground(new java.awt.Color(94, 108, 91));
+        signUpBtn.setText("SIGNUP");
+        signUpBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signUpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnloginActionPerformed(evt);
+                signUpBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 199, 45));
+        jPanel2.add(signUpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 199, 45));
 
-        txtusername.setBackground(new java.awt.Color(244, 239, 230));
-        txtusername.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtusername.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 265, 32));
+        txtemail.setBackground(new java.awt.Color(244, 239, 230));
+        txtemail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtemail.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 265, 32));
 
         txtpassword.setBackground(new java.awt.Color(244, 239, 230));
         txtpassword.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -96,20 +117,20 @@ public class signupeo extends javax.swing.JFrame {
         lblenteruser1.setText("Enter Username");
         jPanel2.add(lblenteruser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 140, 31));
 
-        txtusername1.setBackground(new java.awt.Color(244, 239, 230));
-        txtusername1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtusername1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(txtusername1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 265, 32));
+        txtusername.setBackground(new java.awt.Color(244, 239, 230));
+        txtusername.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtusername.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 265, 32));
 
         lblenterpass1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblenterpass1.setForeground(new java.awt.Color(22, 42, 44));
-        lblenterpass1.setText("Confirm Password");
+        lblenterpass1.setText("Phone Number");
         jPanel2.add(lblenterpass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 130, 26));
 
-        txtpassword1.setBackground(new java.awt.Color(244, 239, 230));
-        txtpassword1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txtpassword1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(txtpassword1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 265, 34));
+        txtphoneNumber.setBackground(new java.awt.Color(244, 239, 230));
+        txtphoneNumber.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtphoneNumber.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(txtphoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 265, 34));
 
         jPanel4.setBackground(new java.awt.Color(104, 104, 103));
 
@@ -136,18 +157,18 @@ public class signupeo extends javax.swing.JFrame {
         lgnstmt4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lgnstmt4.setText(" features designed just for you. ");
 
-        signupaccess.setBackground(new java.awt.Color(244, 239, 230));
-        signupaccess.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
-        signupaccess.setForeground(new java.awt.Color(22, 42, 44));
-        signupaccess.setText("LOGIN");
-        signupaccess.addMouseListener(new java.awt.event.MouseAdapter() {
+        loginAccess.setBackground(new java.awt.Color(244, 239, 230));
+        loginAccess.setFont(new java.awt.Font("Algerian", 1, 18)); // NOI18N
+        loginAccess.setForeground(new java.awt.Color(22, 42, 44));
+        loginAccess.setText("LOGIN");
+        loginAccess.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signupaccessMouseClicked(evt);
+                loginAccessMouseClicked(evt);
             }
         });
-        signupaccess.addActionListener(new java.awt.event.ActionListener() {
+        loginAccess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signupaccessActionPerformed(evt);
+                loginAccessActionPerformed(evt);
             }
         });
 
@@ -170,7 +191,7 @@ public class signupeo extends javax.swing.JFrame {
                                 .addComponent(lgnstmt4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(signupanel1Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(signupaccess, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(loginAccess, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         signupanel1Layout.setVerticalGroup(
@@ -185,7 +206,7 @@ public class signupeo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lgnstmt4)
                 .addGap(45, 45, 45)
-                .addComponent(signupaccess)
+                .addComponent(loginAccess)
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
@@ -235,18 +256,50 @@ public class signupeo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-        JOptionPane.showInputDialog(null, "You are successfuly logged in");
-    }//GEN-LAST:event_btnloginActionPerformed
+    private void signUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpBtnActionPerformed
+        
+        String email = txtemail.getText();
+        String password = txtpassword.getText();
+        String username = txtusername.getText();
+        String phoneNumber = txtphoneNumber.getText();
 
-    private void signupaccessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signupaccessMouseClicked
-        logineo le = new logineo();
+        boolean isPasswordOk = passwordUtils.validatePassword(password);
+
+        if (isPasswordOk) {
+            
+            try {
+                boolean doesUserQualify = false;
+                if(this.userType.equals("normalUser")){
+                    
+                    doesUserQualify = userAuthenticator.SignUpUser(email, username, password, phoneNumber, "users");
+                }
+                if(this.userType.equals("eventOrg")){
+                    doesUserQualify = userAuthenticator.SignUpUser(email, username, password, phoneNumber, "event_organizer");
+                }
+               
+                if (doesUserQualify) {
+                    Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Welcome to tiko-pap");
+                    logineo le = new logineo();
+                    le.setVisible(true);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(signupeo.class.getName()).log(Level.SEVERE, null, ex);
+                Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "The records already exist");
+            }
+        }else{
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Your password does not follow the rules try another one");    
+        }
+        
+    }//GEN-LAST:event_signUpBtnActionPerformed
+
+    private void loginAccessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginAccessMouseClicked
+        logineo le = new logineo(this.userType);
         le.setVisible(true);
-    }//GEN-LAST:event_signupaccessMouseClicked
+    }//GEN-LAST:event_loginAccessMouseClicked
 
-    private void signupaccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupaccessActionPerformed
+    private void loginAccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAccessActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_signupaccessActionPerformed
+    }//GEN-LAST:event_loginAccessActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,7 +337,6 @@ public class signupeo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnlogin;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblenterpass;
@@ -297,11 +349,12 @@ public class signupeo extends javax.swing.JFrame {
     private javax.swing.JLabel lgnstmt2;
     private javax.swing.JLabel lgnstmt3;
     private javax.swing.JLabel lgnstmt4;
-    private javax.swing.JButton signupaccess;
+    private javax.swing.JButton loginAccess;
+    private javax.swing.JButton signUpBtn;
     private javax.swing.JPanel signupanel1;
+    private javax.swing.JTextField txtemail;
     private javax.swing.JPasswordField txtpassword;
-    private javax.swing.JPasswordField txtpassword1;
+    private javax.swing.JPasswordField txtphoneNumber;
     private javax.swing.JTextField txtusername;
-    private javax.swing.JTextField txtusername1;
     // End of variables declaration//GEN-END:variables
 }
