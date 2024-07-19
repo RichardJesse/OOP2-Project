@@ -4,6 +4,8 @@
  */
 package Models;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author user
@@ -15,6 +17,7 @@ public class EventModel {
     private String eventDescription;
     private String availableTickets;
     private int eventId;
+    private Class<? extends JFrame> eventPageClass;
 
     
     public EventModel(String eventName, String genre, String eventDescription) {
@@ -24,6 +27,14 @@ public class EventModel {
     }
 
     public EventModel(String eventName, String genre, String eventDescription, String availableTickets) {
+        this.eventName = eventName;
+        this.genre = genre;
+        this.eventDescription = eventDescription;
+        this.availableTickets = availableTickets;
+        this.eventPageClass = eventPageClass;
+    }
+    
+     public EventModel(String eventName, String genre, String eventDescription, String availableTickets,  Class<? extends JFrame> eventPageClass) {
         this.eventName = eventName;
         this.genre = genre;
         this.eventDescription = eventDescription;
@@ -52,6 +63,10 @@ public class EventModel {
 
     public String getEventDescription() {
         return eventDescription;
+    }
+    
+    public Class<? extends JFrame> getEventPageClass() {
+        return eventPageClass;
     }
 
 

@@ -79,9 +79,7 @@ public class TicketService {
 
     public int getTotalAvailableTickets(int eventId) {
         int totalAvailableTickets = 0;
-
         QueryBuilder queryBuilder = new QueryBuilder();
-
         try {
             PreparedStatement statement = queryBuilder
                     .select("SUM(available_tickets) AS total_tickets")
@@ -148,18 +146,18 @@ public class TicketService {
 
         return totalAvailableTickets;
     }
-    
-    public String getTicketSalesRevenue(int eventOrgId){
-        
+
+    public String getTicketSalesRevenue(int eventOrgId) {
+
         int ticketLevel = this.getTotalAvailableTickets(eventOrgId);
         int tickets = this.getAvailableTickets(eventOrgId);
-        
+
         int price = this.getTotalPrice(eventOrgId);
-        
+
         int calculateRevenue = price * (tickets - ticketLevel);
-        
+
         return String.valueOf(calculateRevenue);
-        
+
     }
 
 }

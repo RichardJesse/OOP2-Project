@@ -919,17 +919,17 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setNumbers() {
-        jLabel12.setText("0");
-        jLabel11.setText("0");
-        
-        new Thread(() -> {
-            String availableTickets = eventService.getTotalAvailableTickets(currentUser.getId());
-
-            // Update UI thread-safely using SwingUtilities.invokeLater()
-            SwingUtilities.invokeLater(() -> jLabel10.setText(availableTickets));
-        }).start();
-
-        jLabel6.setText("Welcome" + " " + this.currentUser.getName());
+//        jLabel12.setText("0");
+//        jLabel11.setText("0");
+//        
+//        new Thread(() -> {
+//            String availableTickets = eventService.getTotalAvailableTickets(currentUser.getId());
+//
+//            // Update UI thread-safely using SwingUtilities.invokeLater()
+//            SwingUtilities.invokeLater(() -> jLabel10.setText(availableTickets));
+//        }).start();
+//
+//        jLabel6.setText("Welcome" + " " + this.currentUser.getName());
 
     }
 
@@ -1207,14 +1207,13 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
     //Helper method to select a label and reset others
     private void selectLabel(JLabel label) {
         selectedLabel = label;
-<<<<<<< HEAD
+
         jLabel2.setBackground(new Color(211, 211, 211));
         jLabel3.setBackground(new Color(211, 211, 211));
         jLabel4.setBackground(new Color(211, 211, 211));
         jLabel5.setBackground(new Color(211, 211, 211));
         label.setBackground(new Color(153, 153, 153));
 
-=======
         jLabel2.setBackground(new Color(211,211,211));
         jLabel3.setBackground(new Color(211,211,211));
         jLabel4.setBackground(new Color(211,211,211));
@@ -1230,7 +1229,7 @@ public class eventManagerDashboardFinished extends javax.swing.JFrame {
             textAvailable.setText(model.getValueAt(0,2).toString());
             textRevenue.setText(model.getValueAt(0,3).toString());
         }
->>>>>>> 89c5b3610aa0843bf425557e52c6517e0c2b2fa1
+
     }
 
     /**
